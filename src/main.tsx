@@ -14,6 +14,16 @@ const Landing = lazy(() => import("./pages/Landing.tsx"));
 const AuthPage = lazy(() => import("./pages/Auth.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const HomeView = lazy(() => import("./pages/dashboard/HomeView.tsx"));
+const SeriesView = lazy(() => import("./pages/series/SeriesView.tsx"));
+const CharactersView = lazy(() => import("./pages/characters/CharactersView.tsx"));
+const InsightsView = lazy(() => import("./pages/insights/InsightsView.tsx"));
+const RankingsView = lazy(() => import("./pages/rankings/RankingsView.tsx"));
+const CollectionsView = lazy(() => import("./pages/collections/CollectionsView.tsx"));
+const FavoritesView = lazy(() => import("./pages/favorites/FavoritesView.tsx"));
+const AboutView = lazy(() => import("./pages/about/AboutView.tsx"));
+const ManhwaDetailView = lazy(() => import("./pages/manhwa-detail/ManhwaDetailView.tsx"));
+const CharacterDetailView = lazy(() => import("./pages/character-detail/CharacterDetailView.tsx"));
 
 // Simple loading fallback for route transitions
 function RouteLoading() {
@@ -128,7 +138,99 @@ createRoot(document.getElementById("root")!).render(
                 path="/dashboard"
                 element={
                   <RequireAuth>
-                    <Dashboard />
+                    <Dashboard>
+                      <HomeView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/series"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <SeriesView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/characters"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <CharactersView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/insights"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <InsightsView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/rankings"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <RankingsView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/collections"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <CollectionsView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/favorites"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <FavoritesView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <AboutView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/manhwa/:id"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <ManhwaDetailView />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/character/:id"
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <CharacterDetailView />
+                    </Dashboard>
                   </RequireAuth>
                 }
               />

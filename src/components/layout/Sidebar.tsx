@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import {
   BookOpen,
   Compass,
-  Archive,
+  Users,
   ScrollText,
   Trophy,
   FolderHeart,
@@ -34,7 +34,7 @@ export function useNavGroups(): NavGroup[] {
       items: [
         { to: "/dashboard", label: "Home", icon: Compass },
         { to: "/series", label: "Series", icon: BookOpen },
-        { to: "/characters", label: "Characters", icon: UsersIcon },
+        { to: "/characters", label: "Characters", icon: Users },
         { to: "/insights", label: "Insights", icon: ScrollText },
         { to: "/rankings", label: "Rankings", icon: Trophy },
       ],
@@ -55,9 +55,7 @@ export function useNavGroups(): NavGroup[] {
   return groups;
 }
 
-function UsersIcon(props: { className?: string }) {
-  return <Archive {...props} />;
-}
+
 
 export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const location = useLocation();

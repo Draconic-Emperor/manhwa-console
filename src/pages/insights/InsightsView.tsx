@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { BookOpen, Quote, ScrollText } from "lucide-react";
+import { Quote, ScrollText } from "lucide-react";
 import { useCodex } from "@/hooks/use-codex";
 import { EmptyState, SkeletonGrid } from "@/components/ui/codex";
 import { InsightCard } from "@/components/cards/InsightCard";
@@ -107,5 +107,3 @@ export default function InsightsView() {
     </div>
   );
 }
-
-void BookOpen;

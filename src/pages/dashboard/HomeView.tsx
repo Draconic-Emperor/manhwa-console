@@ -14,7 +14,7 @@ import {
   Users,
   Wand2,
 } from "lucide-react";
-import { useCodex } from "@/hooks/use-codex";
+import { useCodex, useFavorite } from "@/hooks/use-codex";
 import type { Character, Manhwa } from "@/lib/codex";
 import { rankTier } from "@/lib/codex";
 import { CoverImage } from "@/components/ui/CoverImage";

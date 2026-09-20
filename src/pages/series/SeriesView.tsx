@@ -1,5 +1,9 @@
 import { useMemo, useState } from "react";
 import { Library, Search, SlidersHorizontal, X } from "lucide-react";
+
+function Filter(props: { className?: string }) {
+  return <SlidersHorizontal {...props} />;
+}
 import { useCodex } from "@/hooks/use-codex";
 import { STATUS_LABEL } from "@/lib/codex";
 import { EmptyState, SectionHeader, SkeletonGrid } from "@/components/ui/codex";

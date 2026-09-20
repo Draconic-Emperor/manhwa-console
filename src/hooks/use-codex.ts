@@ -20,16 +20,18 @@ export function useCodex() {
   const loading =
     manhwa === undefined || characters === undefined || insights === undefined || favorites === undefined;
 
-  const manhwaById = useMemo(() => new Map((manhwa ?? []).map((m) => [m._id, m])), [manhwa]);
-  const characterById = useMemo(() => new Map((characters ?? []).map((c) => [c._id, c])), [characters]);
+  const manhwaById = useMemo(() => new Map<string, Manhwa>((manhwa ?? []).map((m) => [m._id as string, m])), [manhwa]);
+  const characterById = useMemo(
+    () => new Map<string, Character>((characters ?? []).map((c) => [c._id as string, c])),
+    [characters],
+  );
 
   const favoriteIds = useMemo(
     () => new Set((favorites ?? []).map((f) => `${f.item_kind}:${f.item_id}`)),
     [favorites],
   );
   const isFavorite = useCallback(
-    (kind: "manhwa" | "character", id: Id<"manhwa"> | Id<"characters">) =>
-      favoriteIds.has(`${kind}:${id}`),
+    (kind: "manhwa" | "character", id: string) => favoriteIds.has(`${kind}:${id}`),
     [favoriteIds],
   );
 
@@ -63,11 +65,11 @@ export function useFavorite() {
   const ensureAuth = useEnsureAuth();
 
   const toggleFavorite = useCallback(
-    async (kind: "manhwa" | "character", id: Id<"manhwa"> | Id<"characters">, title: string) => {
+    async (kind: "manhwa" | "character", id: string, title: string) => {
       const nowSaved = !isFavorite(kind, id);
       try {
         await ensureAuth();
-        await toggle({ item_kind: kind, item_id: id });
+        await toggle({ item_kind: kind, item_id: id as Id<"manhwa"> | Id<"characters"> });
         toast.success(nowSaved ? `Saved “${title}” to your Codex` : `Removed “${title}” from your Codex`);
       } catch {
         toast.error("The seal rejected the offering. Please try again.");
