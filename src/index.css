@@ -1,0 +1,447 @@
+/* DO NOT CHANGE */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* DO NOT CHANGE */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Codex extension palette */
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-surface: var(--surface);
+  --color-card-elev: var(--card-elev);
+  --color-violet: var(--violet);
+  --color-violet-bright: var(--violet-bright);
+  --color-magenta: var(--magenta);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+/* ============================================================
+   Manhwa Codex — dark fantasy codex design system
+   Change values here; every component reads these variables.
+   ============================================================ */
+:root {
+  --radius: 0.75rem;
+
+  /* Core palette (from the design brief) */
+  --ink: #08090d;
+  --ink-2: #0e1118;
+  --surface: #151923;
+  --card-elev: #1a1f2b;
+  --violet: #8b5cf6;
+  --violet-bright: #a78bfa;
+  --magenta: #e879f9;
+  --gold: #f5c76b;
+  --text: #f8fafc;
+  --text-2: #a8b0c0;
+  --text-3: #6f788a;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #fb7185;
+
+  /* shadcn token mapping (dark-first, consumed by ui primitives) */
+  --background: var(--ink);
+  --foreground: var(--text);
+  --card: var(--card-elev);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface);
+  --secondary-foreground: var(--text);
+  --muted: var(--card-elev);
+  --muted-foreground: var(--text-2);
+  --accent: var(--card-elev);
+  --accent-foreground: var(--text);
+  --destructive: var(--danger);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: var(--violet-bright);
+  --chart-1: var(--violet);
+  --chart-2: var(--magenta);
+  --chart-3: var(--gold);
+  --chart-4: var(--success);
+  --chart-5: var(--danger);
+  --sidebar: var(--ink-2);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--card-elev);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: var(--violet-bright);
+
+  /* Codex extension tokens */
+  --card-hover: #1f2532;
+  --violet-soft: rgba(139, 92, 246, 0.14);
+  --violet-glow: rgba(139, 92, 246, 0.35);
+  --gold-soft: rgba(245, 199, 107, 0.12);
+  --gold-glow: rgba(245, 199, 107, 0.28);
+  --magenta-soft: rgba(232, 121, 249, 0.14);
+  --magenta-glow: rgba(232, 121, 249, 0.3);
+  --glow: 0 0 24px var(--violet-glow);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover:
+    0 2px 4px rgba(0, 0, 0, 0.4), 0 24px 48px -20px rgba(0, 0, 0, 0.7),
+    0 0 32px -8px var(--violet-glow);
+  --shadow-pop: 0 24px 64px -16px rgba(0, 0, 0, 0.8);
+  --font-display: "Cinzel", "Iowan Old Style", Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* The codex is dark-first: identical tokens, kept for explicit .dark support */
+.dark {
+  --background: var(--ink);
+  --foreground: var(--text);
+  --card: var(--card-elev);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface);
+  --secondary-foreground: var(--text);
+  --muted: var(--card-elev);
+  --muted-foreground: var(--text-2);
+  --accent: var(--card-elev);
+  --accent-foreground: var(--text);
+  --destructive: var(--danger);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: var(--violet-bright);
+  --sidebar: var(--ink-2);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--card-elev);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: var(--violet-bright);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    color-scheme: dark;
+    scrollbar-color: rgba(139, 92, 246, 0.35) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--violet-soft);
+    color: var(--text);
+  }
+
+  /* Global focus visibility for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* ============ Decorative layers ============ */
+
+/* Ambient page aura + faint parchment grain, fixed behind all content */
+.codex-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, var(--violet-soft), transparent 60%),
+    radial-gradient(50rem 36rem at -10% 30%, var(--magenta-soft), transparent 60%),
+    radial-gradient(44rem 30rem at 50% 110%, var(--gold-soft), transparent 60%);
+}
+
+.codex-ambient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Editorial headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, var(--gold), #fae3b0 55%, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-arcane {
+  background: linear-gradient(100deg, var(--violet-bright), var(--magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline rules with a glowing rune at the start */
+.codex-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, var(--violet-glow), rgba(255, 255, 255, 0.08) 30%, transparent);
+}
+
+/* Section kicker: small-caps rune label */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--violet-bright);
+}
+
+.kicker::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--violet), transparent);
+}
+
+/* ============ Cards & surfaces ============ */
+
+.panel {
+  background: var(--card-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.panel-glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.media-zoom {
+  overflow: hidden;
+}
+
+.media-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.group:hover .media-zoom img,
+.group:focus-visible .media-zoom img,
+.group:focus-within .media-zoom img {
+  transform: scale(1.06);
+}
+
+/* ============ Buttons ============ */
+
+.btn-arcane {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(120deg, var(--violet), #7c3aed 55%, var(--magenta));
+  border: 1px solid rgba(167, 139, 250, 0.5);
+  box-shadow: 0 0 20px -4px var(--violet-glow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-arcane:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 30px -4px var(--violet-glow), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.btn-arcane:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: #1a1206;
+  background: linear-gradient(120deg, var(--gold), #f8d98d 60%, var(--gold));
+  border: 1px solid rgba(245, 199, 107, 0.6);
+  box-shadow: 0 0 20px -6px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: filter 0.2s ease, transform 0.15s ease;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.08);
+}
+
+.btn-gold:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Favorite heart pulse */
+@keyframes heart-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.45);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-pop {
+  animation: heart-pop 0.4s ease;
+}
+
+/* ============ Skeleton shimmer ============ */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--card-elev);
+  border-radius: var(--radius-md);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06) 45%, rgba(167, 139, 250, 0.08) 55%, transparent);
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ============ Page transition & staggered reveal ============ */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============ Scrollbars (webkit) ============ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.25);
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.45);
+}
+
+/* ============ Reduced motion ============ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

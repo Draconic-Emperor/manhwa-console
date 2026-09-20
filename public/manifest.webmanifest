@@ -1,0 +1,17 @@
+{
+  "name": "Manhwa Codex",
+  "short_name": "Codex",
+  "description": "A community-driven dark-fantasy archive of manhwa series, characters, lore, and power rankings.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08090D",
+  "theme_color": "#08090D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
