@@ -204,7 +204,7 @@ export function CharacterFormDialog({
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)} disabled={saving}>
               Cancel
             </Button>
-            <Button type="submit" disabled={saving} className="btn-gold">
+            <Button type="submit" disabled={saving} className="btn-amethyst">
               {saving && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
               {editing ? "Save changes" : "Catalog character"}
             </Button>

@@ -77,14 +77,14 @@ export default function Landing() {
             className="group flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Manhwa Console home"
           >
-            <span className="relative flex size-9 items-center justify-center rounded-xl border border-gold/30 bg-void shadow-[0_0_18px_-4px_var(--crimson-glow)] transition-transform duration-300 group-hover:rotate-6">
+            <span className="relative flex size-9 items-center justify-center rounded-xl border border-amethyst/30 bg-void shadow-[0_0_18px_-4px_var(--crimson-glow)] transition-transform duration-300 group-hover:rotate-6">
               <ConsoleSeal className="size-5" />
             </span>
             <span className="hidden min-w-0 sm:block">
               <span className="font-display block text-sm font-bold leading-tight tracking-[0.18em] text-parchment">
                 MANHWA
               </span>
-              <span className="text-gradient-gold font-display block text-[10px] font-semibold leading-tight tracking-[0.42em]">
+              <span className="text-gradient-amethyst font-display block text-[10px] font-semibold leading-tight tracking-[0.42em]">
                 CONSOLE
               </span>
             </span>
@@ -97,7 +97,7 @@ export default function Landing() {
           </nav>
 
           <div className="flex-1" />
-          <Link to="/auth?returnTo=%2Fdashboard" className="btn-gold px-4 py-2 text-sm sm:px-5 sm:py-2.5">
+          <Link to="/auth?returnTo=%2Fdashboard" className="btn-amethyst px-4 py-2 text-sm sm:px-5 sm:py-2.5">
             Enter the Archive <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
@@ -110,12 +110,12 @@ export default function Landing() {
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             <div className="ember-breathe absolute left-1/2 top-[-25%] size-[46rem] -translate-x-1/2 rounded-full bg-crimson/20 blur-[130px]" />
             <div className="absolute right-[-12%] top-[25%] size-[30rem] rounded-full bg-crimson/10 blur-[120px]" />
-            <div className="absolute bottom-[-35%] left-[-12%] size-[32rem] rounded-full bg-gold/8 blur-[120px]" />
+            <div className="absolute bottom-[-35%] left-[-12%] size-[32rem] rounded-full bg-amethyst/8 blur-[120px]" />
             <div
               className="absolute inset-0 opacity-[0.13]"
               style={{
                 backgroundImage:
-                  "repeating-linear-gradient(90deg, rgba(212,175,55,0.16) 0 1px, transparent 1px 96px)",
+                  "repeating-linear-gradient(90deg, rgba(167, 139, 250,0.16) 0 1px, transparent 1px 96px)",
               }}
             />
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-obsidian to-transparent" />
@@ -123,7 +123,7 @@ export default function Landing() {
 
           <div className="relative mx-auto w-full max-w-4xl px-4 py-24 text-center sm:px-6">
             <div className="rise-in flex justify-center">
-              <span className="relative flex size-20 items-center justify-center rounded-3xl border border-gold/35 bg-void/80 shadow-[0_0_60px_-12px_var(--crimson-glow)]">
+              <span className="relative flex size-20 items-center justify-center rounded-3xl border border-amethyst/35 bg-void/80 shadow-[0_0_60px_-12px_var(--crimson-glow)]">
                 <ConsoleSeal className="size-12" />
               </span>
             </div>
@@ -137,7 +137,7 @@ export default function Landing() {
               className="font-display rise-in mt-5 text-5xl font-bold leading-[1.04] tracking-tight sm:text-7xl lg:text-8xl"
               style={{ animationDelay: "140ms" }}
             >
-              <span className="text-gradient-gold">MANHWA CONSOLE</span>
+              <span className="text-gradient-amethyst">MANHWA CONSOLE</span>
             </h1>
 
             <p
@@ -159,7 +159,7 @@ export default function Landing() {
               className="rise-in mt-10 flex flex-wrap items-center justify-center gap-4"
               style={{ animationDelay: "380ms" }}
             >
-              <Link to="/auth?returnTo=%2Fdashboard" className="btn-gold px-8 py-3.5 text-sm sm:text-base">
+              <Link to="/auth?returnTo=%2Fdashboard" className="btn-amethyst px-8 py-3.5 text-sm sm:text-base">
                 <KeyRound className="size-4" aria-hidden="true" /> ENTER THE ARCHIVE
               </Link>
               <Link to="/auth?returnTo=%2Fchronicles" className="btn-ember px-8 py-3.5 text-sm sm:text-base">
@@ -210,7 +210,7 @@ export default function Landing() {
               const Icon = f.icon;
               return (
                 <article key={f.title} className="record hover-lift p-6">
-                  <span className="flex size-11 items-center justify-center rounded-xl border border-gold/30 bg-crimson/12 text-gold shadow-[0_0_18px_-6px_var(--crimson-glow)]">
+                  <span className="flex size-11 items-center justify-center rounded-xl border border-amethyst/30 bg-crimson/12 text-amethyst shadow-[0_0_18px_-6px_var(--crimson-glow)]">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
                   <h3 className="font-display mt-4 text-lg font-semibold text-parchment">{f.title}</h3>
@@ -237,7 +237,7 @@ export default function Landing() {
               </div>
               <Link
                 to="/auth?returnTo=%2Fseries"
-                className="inline-flex items-center gap-1 text-sm font-medium text-gold transition-colors hover:text-[#f0dd9a]"
+                className="inline-flex items-center gap-1 text-sm font-medium text-amethyst transition-colors hover:text-[#dccbfb]"
               >
                 Open the full archive <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
@@ -257,14 +257,14 @@ export default function Landing() {
               </div>
             ) : featured.length === 0 ? (
               <div className="panel mt-8 flex flex-col items-center gap-3 px-6 py-14 text-center">
-                <span className="flex size-14 items-center justify-center rounded-2xl border border-gold/30 bg-crimson/10 text-gold">
+                <span className="flex size-14 items-center justify-center rounded-2xl border border-amethyst/30 bg-crimson/10 text-amethyst">
                   <BookOpen className="size-6" />
                 </span>
                 <p className="font-display text-lg font-semibold text-parchment">The first shelf awaits</p>
                 <p className="max-w-sm text-sm text-text-2">
                   No records have been sealed yet. Enter the archive and write the first entry.
                 </p>
-                <Link to="/auth?returnTo=%2Fdashboard" className="btn-gold mt-2 px-5 py-2.5 text-sm">
+                <Link to="/auth?returnTo=%2Fdashboard" className="btn-amethyst mt-2 px-5 py-2.5 text-sm">
                   <Sparkles className="size-4" aria-hidden="true" /> Inscribe a series
                 </Link>
               </div>
@@ -281,10 +281,10 @@ export default function Landing() {
                       <CoverImage src={m.cover_image} seed={m._id} ratio="portrait" alt="" />
                       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/15 to-transparent" />
                       <div className="absolute inset-x-0 bottom-0 p-3">
-                        <span className="inline-flex rounded-full border border-gold/40 bg-gold/15 px-2 py-0.5 text-[10px] font-semibold tabular-nums text-[#f0dd9a]">
+                        <span className="inline-flex rounded-full border border-amethyst/40 bg-amethyst/15 px-2 py-0.5 text-[10px] font-semibold tabular-nums text-[#dccbfb]">
                           ◆ Rank {m.rank}
                         </span>
-                        <h3 className="font-display mt-2 line-clamp-2 text-sm font-semibold leading-snug text-parchment transition-colors group-hover:text-gold">
+                        <h3 className="font-display mt-2 line-clamp-2 text-sm font-semibold leading-snug text-parchment transition-colors group-hover:text-amethyst">
                           {m.title}
                         </h3>
                         <p className="truncate text-[11px] text-parchment/65">{m.author}</p>
@@ -312,7 +312,7 @@ export default function Landing() {
           <ol className="mt-10 grid gap-4 md:grid-cols-3">
             {STEPS.map((s) => (
               <li key={s.n} className="record relative p-6">
-                <span aria-hidden="true" className="font-display text-gradient-gold text-4xl font-bold">
+                <span aria-hidden="true" className="font-display text-gradient-amethyst text-4xl font-bold">
                   {s.n}
                 </span>
                 <h3 className="font-display mt-3 text-lg font-semibold text-parchment">{s.title}</h3>
@@ -327,20 +327,20 @@ export default function Landing() {
           <div className="record relative overflow-hidden px-6 py-14 text-center sm:px-10 lg:py-20">
             <div aria-hidden="true" className="pointer-events-none absolute inset-0">
               <div className="ember-breathe absolute left-1/2 top-1/2 size-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-crimson/15 blur-[110px]" />
-              <div className="absolute bottom-[-40%] left-[-10%] size-[26rem] rounded-full bg-gold/8 blur-[110px]" />
+              <div className="absolute bottom-[-40%] left-[-10%] size-[26rem] rounded-full bg-amethyst/8 blur-[110px]" />
             </div>
             <div className="relative flex flex-col items-center gap-5">
-              <span className="flex size-14 items-center justify-center rounded-2xl border border-gold/35 bg-void shadow-[0_0_30px_-8px_var(--crimson-glow)]">
+              <span className="flex size-14 items-center justify-center rounded-2xl border border-amethyst/35 bg-void shadow-[0_0_30px_-8px_var(--crimson-glow)]">
                 <ConsoleSeal className="size-8" />
               </span>
               <h2 id="cta-heading" className="font-display max-w-2xl text-3xl font-bold tracking-tight text-parchment sm:text-5xl">
-                The archive remembers <span className="text-gradient-gold">those who write</span>
+                The archive remembers <span className="text-gradient-amethyst">those who write</span>
               </h2>
               <p className="max-w-xl text-sm leading-relaxed text-text-2 sm:text-base">
                 Sign in with email or continue as a wandering researcher — the archive opens the moment you do.
               </p>
               <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
-                <Link to="/auth?returnTo=%2Fdashboard" className="btn-gold px-7 py-3 text-base">
+                <Link to="/auth?returnTo=%2Fdashboard" className="btn-amethyst px-7 py-3 text-base">
                   <KeyRound className="size-4" aria-hidden="true" /> ENTER THE ARCHIVE
                 </Link>
                 <Link to="/auth?returnTo=%2Fcharacters" className="btn-ember px-7 py-3 text-base">

@@ -46,7 +46,8 @@
   --color-panel: var(--panel);
   --color-crimson: var(--crimson);
   --color-blood: var(--blood-red);
-  --color-gold: var(--antique-gold);
+  --color-amethyst: var(--amethyst);
+  --color-amethyst-bright: var(--amethyst-bright);
   --color-parchment: var(--parchment);
   --color-text-2: var(--text-2);
   --color-text-3: var(--text-3);
@@ -56,22 +57,25 @@
 
 /* ============================================================
    MANHWA CONSOLE — forbidden archive design system
+   Deep crimson + amethyst accent system.
    Change values here; every component reads these variables.
    ============================================================ */
 :root {
   --radius: 0.75rem;
 
-  /* Core palette (from the design brief) */
+  /* Core palette */
   --obsidian: #08090d;
   --void: #111218;
   --crimson: #8b1126;
   --blood-red: #b31b34;
-  --antique-gold: #d4af37;
+  --amethyst: #a78bfa;
+  --amethyst-bright: #cdb9fa;
+  --amethyst-deep: #7c5ccf;
   --parchment: #e8dfc8;
   --panel: #14161d;
-  --console-border: rgba(212, 175, 55, 0.15);
-  --text-2: #b9b2a0;
-  --text-3: #77705f;
+  --console-border: rgba(167, 139, 250, 0.15);
+  --text-2: #b3adbf;
+  --text-3: #79738a;
 
   /* shadcn token mapping (dark-first, consumed by ui primitives) */
   --background: var(--obsidian);
@@ -80,8 +84,8 @@
   --card-foreground: var(--parchment);
   --popover: var(--void);
   --popover-foreground: var(--parchment);
-  --primary: var(--antique-gold);
-  --primary-foreground: #1a1508;
+  --primary: var(--amethyst);
+  --primary-foreground: #1b1233;
   --secondary: var(--panel);
   --secondary-foreground: var(--parchment);
   --muted: var(--void);
@@ -90,25 +94,25 @@
   --accent-foreground: var(--parchment);
   --destructive: #e5484d;
   --border: var(--console-border);
-  --input: rgba(212, 175, 55, 0.22);
-  --ring: var(--antique-gold);
-  --chart-1: var(--antique-gold);
+  --input: rgba(167, 139, 250, 0.22);
+  --ring: var(--amethyst);
+  --chart-1: var(--amethyst);
   --chart-2: var(--blood-red);
-  --chart-3: var(--crimson);
-  --chart-4: #7d9c6a;
+  --chart-3: var(--amethyst-bright);
+  --chart-4: var(--amethyst-deep);
   --chart-5: var(--blood-red);
   --sidebar: var(--void);
   --sidebar-foreground: var(--parchment);
-  --sidebar-primary: var(--antique-gold);
-  --sidebar-primary-foreground: #1a1508;
+  --sidebar-primary: var(--amethyst);
+  --sidebar-primary-foreground: #1b1233;
   --sidebar-accent: var(--panel);
   --sidebar-accent-foreground: var(--parchment);
   --sidebar-border: var(--console-border);
-  --sidebar-ring: var(--antique-gold);
+  --sidebar-ring: var(--amethyst);
 
   /* Console extension tokens */
-  --gold-soft: rgba(212, 175, 55, 0.12);
-  --gold-glow: rgba(212, 175, 55, 0.35);
+  --amethyst-soft: rgba(167, 139, 250, 0.12);
+  --amethyst-glow: rgba(167, 139, 250, 0.35);
   --crimson-soft: rgba(139, 17, 38, 0.35);
   --crimson-glow: rgba(179, 27, 52, 0.45);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
@@ -128,8 +132,8 @@
   --card-foreground: var(--parchment);
   --popover: var(--void);
   --popover-foreground: var(--parchment);
-  --primary: var(--antique-gold);
-  --primary-foreground: #1a1508;
+  --primary: var(--amethyst);
+  --primary-foreground: #1b1233;
   --secondary: var(--panel);
   --secondary-foreground: var(--parchment);
   --muted: var(--void);
@@ -138,16 +142,16 @@
   --accent-foreground: var(--parchment);
   --destructive: #e5484d;
   --border: var(--console-border);
-  --input: rgba(212, 175, 55, 0.22);
-  --ring: var(--antique-gold);
+  --input: rgba(167, 139, 250, 0.22);
+  --ring: var(--amethyst);
   --sidebar: var(--void);
   --sidebar-foreground: var(--parchment);
-  --sidebar-primary: var(--antique-gold);
-  --sidebar-primary-foreground: #1a1508;
+  --sidebar-primary: var(--amethyst);
+  --sidebar-primary-foreground: #1b1233;
   --sidebar-accent: var(--panel);
   --sidebar-accent-foreground: var(--parchment);
   --sidebar-border: var(--console-border);
-  --sidebar-ring: var(--antique-gold);
+  --sidebar-ring: var(--amethyst);
 }
 
 @layer base {
@@ -157,7 +161,7 @@
 
   html {
     color-scheme: dark;
-    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+    scrollbar-color: rgba(167, 139, 250, 0.3) transparent;
   }
 
   body {
@@ -200,8 +204,8 @@
   pointer-events: none;
   background:
     radial-gradient(60rem 40rem at 85% -10%, var(--crimson-soft), transparent 60%),
-    radial-gradient(50rem 36rem at -10% 30%, rgba(139, 17, 38, 0.18), transparent 60%),
-    radial-gradient(44rem 30rem at 50% 110%, var(--gold-soft), transparent 60%);
+    radial-gradient(50rem 36rem at -10% 30%, rgba(124, 92, 207, 0.16), transparent 60%),
+    radial-gradient(44rem 30rem at 50% 110%, var(--amethyst-soft), transparent 60%);
 }
 
 .console-ambient::after {
@@ -221,7 +225,7 @@
   opacity: 0.55;
   background:
     radial-gradient(30rem 18rem at 20% 30%, rgba(139, 17, 38, 0.1), transparent 70%),
-    radial-gradient(26rem 16rem at 75% 60%, rgba(212, 175, 55, 0.05), transparent 70%),
+    radial-gradient(26rem 16rem at 75% 60%, rgba(167, 139, 250, 0.06), transparent 70%),
     radial-gradient(32rem 20rem at 50% 85%, rgba(139, 17, 38, 0.08), transparent 70%);
   animation: fog-drift 46s ease-in-out infinite alternate;
 }
@@ -235,7 +239,7 @@
   }
 }
 
-/* Floating crimson dust particles (CSS-only, GPU-friendly) */
+/* Floating crimson + amethyst dust particles (CSS-only, GPU-friendly) */
 .console-particles {
   position: fixed;
   inset: 0;
@@ -253,22 +257,22 @@
 
 .console-particles::before {
   background-image:
-    radial-gradient(1.5px 1.5px at 12% 20%, rgba(212, 175, 55, 0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 12% 20%, rgba(167, 139, 250, 0.55), transparent 60%),
     radial-gradient(1px 1px at 30% 70%, rgba(179, 27, 52, 0.55), transparent 60%),
-    radial-gradient(1.5px 1.5px at 47% 35%, rgba(212, 175, 55, 0.35), transparent 60%),
+    radial-gradient(1.5px 1.5px at 47% 35%, rgba(205, 185, 250, 0.4), transparent 60%),
     radial-gradient(1px 1px at 62% 82%, rgba(179, 27, 52, 0.4), transparent 60%),
-    radial-gradient(1.5px 1.5px at 78% 18%, rgba(212, 175, 55, 0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 18%, rgba(167, 139, 250, 0.5), transparent 60%),
     radial-gradient(1px 1px at 88% 55%, rgba(179, 27, 52, 0.5), transparent 60%);
   animation: dust-float 36s linear infinite;
 }
 
 .console-particles::after {
   background-image:
-    radial-gradient(1px 1px at 8% 60%, rgba(212, 175, 55, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 8% 60%, rgba(167, 139, 250, 0.45), transparent 60%),
     radial-gradient(1.5px 1.5px at 22% 12%, rgba(179, 27, 52, 0.45), transparent 60%),
-    radial-gradient(1px 1px at 40% 88%, rgba(212, 175, 55, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 40% 88%, rgba(205, 185, 250, 0.35), transparent 60%),
     radial-gradient(1.5px 1.5px at 55% 8%, rgba(179, 27, 52, 0.4), transparent 60%),
-    radial-gradient(1px 1px at 70% 42%, rgba(212, 175, 55, 0.35), transparent 60%),
+    radial-gradient(1px 1px at 70% 42%, rgba(167, 139, 250, 0.4), transparent 60%),
     radial-gradient(1.5px 1.5px at 92% 78%, rgba(179, 27, 52, 0.45), transparent 60%);
   animation: dust-float 52s linear infinite reverse;
   opacity: 0.8;
@@ -302,7 +306,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--antique-gold);
+  color: var(--amethyst);
 }
 
 .kicker::before {
@@ -312,16 +316,16 @@
   background: linear-gradient(90deg, var(--crimson), transparent);
 }
 
-/* Gold / crimson text treatments */
-.text-gradient-gold {
-  background: linear-gradient(100deg, var(--antique-gold), #f3e3a4 55%, var(--antique-gold));
+/* Amethyst / crimson text treatments */
+.text-gradient-amethyst {
+  background: linear-gradient(100deg, var(--amethyst), #dccbfb 55%, var(--amethyst));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .text-gradient-ember {
-  background: linear-gradient(100deg, var(--antique-gold), var(--blood-red) 70%, var(--crimson));
+  background: linear-gradient(100deg, var(--amethyst), var(--blood-red) 70%, var(--crimson));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -331,7 +335,7 @@
 .console-rule {
   position: relative;
   height: 1px;
-  background: linear-gradient(90deg, var(--crimson-glow), rgba(212, 175, 55, 0.18) 30%, transparent);
+  background: linear-gradient(90deg, var(--crimson-glow), rgba(167, 139, 250, 0.18) 30%, transparent);
 }
 
 /* ============ Archive records (cards & panels) ============ */
@@ -350,7 +354,7 @@
   border: 1px solid var(--console-border);
 }
 
-/* Archive record: gold hairline border + crimson seal notch on hover */
+/* Archive record: amethyst hairline border + crimson seal notch on hover */
 .record {
   position: relative;
   background: var(--panel);
@@ -381,7 +385,7 @@
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(167, 139, 250, 0.4);
 }
 
 .media-zoom {
@@ -400,8 +404,8 @@
 
 /* ============ Buttons ============ */
 
-/* Primary: antique gold */
-.btn-gold {
+/* Primary: amethyst */
+.btn-amethyst {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -409,23 +413,23 @@
   gap: 0.5rem;
   border-radius: var(--radius-md);
   font-weight: 600;
-  color: #1a1508;
-  background: linear-gradient(120deg, #e6c86a, var(--antique-gold) 55%, #b9962c);
-  border: 1px solid rgba(212, 175, 55, 0.7);
-  box-shadow: 0 0 20px -6px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #1b1233;
+  background: linear-gradient(120deg, #cdb9fa, var(--amethyst) 55%, #7c5ccf);
+  border: 1px solid rgba(167, 139, 250, 0.7);
+  box-shadow: 0 0 20px -6px var(--amethyst-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.btn-gold:hover {
+.btn-amethyst:hover {
   filter: brightness(1.08);
   box-shadow: 0 0 28px -6px var(--crimson-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.btn-gold:active {
+.btn-amethyst:active {
   transform: translateY(1px) scale(0.99);
 }
 
-/* Secondary: dark with gold border, crimson glow on hover */
+/* Secondary: dark with amethyst border, crimson glow on hover */
 .btn-ember {
   display: inline-flex;
   align-items: center;
@@ -435,13 +439,13 @@
   font-weight: 600;
   color: var(--parchment);
   background: color-mix(in srgb, var(--void) 85%, transparent);
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  border: 1px solid rgba(167, 139, 250, 0.45);
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
     color 0.2s ease, transform 0.15s ease;
 }
 
 .btn-ember:hover {
-  border-color: rgba(212, 175, 55, 0.75);
+  border-color: rgba(167, 139, 250, 0.75);
   background: color-mix(in srgb, var(--panel) 90%, transparent);
   box-shadow: 0 0 24px -8px var(--crimson-glow);
 }
@@ -472,10 +476,10 @@
 
 /* ============ Forms & search ============ */
 
-/* Gold-bordered, crimson-glow focus inputs */
+/* Amethyst-bordered, crimson-glow focus inputs */
 .input-console {
   background: color-mix(in srgb, var(--void) 80%, transparent);
-  border: 1px solid rgba(212, 175, 55, 0.28);
+  border: 1px solid rgba(167, 139, 250, 0.28);
   border-radius: var(--radius-md);
   color: var(--parchment);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -486,8 +490,8 @@
 }
 
 .input-console:focus {
-  border-color: rgba(212, 175, 55, 0.65);
-  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), 0 0 22px -6px var(--crimson-glow);
+  border-color: rgba(167, 139, 250, 0.65);
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.35), 0 0 22px -6px var(--crimson-glow);
   outline: none;
 }
 
@@ -525,7 +529,7 @@
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.06) 45%, rgba(139, 17, 38, 0.1) 55%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.06) 45%, rgba(139, 17, 38, 0.1) 55%, transparent);
   animation: shimmer 1.6s infinite;
 }
 
@@ -581,13 +585,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.22);
+  background: rgba(167, 139, 250, 0.22);
   border-radius: 999px;
   border: 2px solid var(--obsidian);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.4);
+  background: rgba(167, 139, 250, 0.4);
 }
 
 /* ============ Reduced motion ============ */

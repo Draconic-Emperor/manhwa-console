@@ -105,10 +105,10 @@ export function AppShell({ children }: { children: ReactNode }) {
           aria-label="Manhwa Console home"
           className="flex items-center gap-2 rounded-lg px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <span className="flex size-8 items-center justify-center rounded-lg border border-gold/30 bg-void">
+          <span className="flex size-8 items-center justify-center rounded-lg border border-amethyst/30 bg-void">
             <ConsoleSeal className="size-5" />
           </span>
-          <span className="text-gradient-gold font-display text-sm font-bold tracking-[0.2em]">CONSOLE</span>
+          <span className="text-gradient-amethyst font-display text-sm font-bold tracking-[0.2em]">CONSOLE</span>
         </button>
         <div className="flex-1" />
         <button
@@ -140,7 +140,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="console-rule mb-4" aria-hidden="true" />
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-text-3">
             <p className="flex items-center gap-2">
-              <KeyRound className="size-3.5 text-gold" aria-hidden="true" />
+              <KeyRound className="size-3.5 text-amethyst" aria-hidden="true" />
               Manhwa Console — a forbidden archive, kept by its researchers.
             </p>
             <p>

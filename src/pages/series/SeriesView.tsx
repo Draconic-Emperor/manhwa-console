@@ -161,7 +161,7 @@ export default function SeriesView() {
           </span>
           {activeFilters > 0 && (
             <>
-              <span className="inline-flex items-center gap-1 text-gold">
+              <span className="inline-flex items-center gap-1 text-amethyst">
                 <Filter className="size-3" aria-hidden="true" />
                 {activeFilters} active
               </span>

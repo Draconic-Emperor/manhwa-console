@@ -86,7 +86,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         <button
           type="button"
           onClick={openSearch}
-          className="group flex w-full items-center gap-2.5 rounded-lg border border-gold/25 bg-void/70 px-3 py-2.5 text-sm text-muted-foreground transition-all hover:border-gold/50 hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="group flex w-full items-center gap-2.5 rounded-lg border border-amethyst/25 bg-void/70 px-3 py-2.5 text-sm text-muted-foreground transition-all hover:border-amethyst/50 hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Search className="size-4 shrink-0" aria-hidden="true" />
           <span className="flex-1 truncate text-left">Query Archive…</span>
@@ -119,7 +119,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
                       >
                         <Icon className="size-4 shrink-0" aria-hidden="true" />
                         <span className="flex-1">{item.label}</span>
-                        <span className="rounded-full border border-gold/30 bg-gold/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-gold">
+                        <span className="rounded-full border border-amethyst/30 bg-amethyst/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amethyst">
                           Sealed
                         </span>
                       </span>
@@ -142,16 +142,16 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
                       {active && (
                         <span
                           aria-hidden="true"
-                          className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-antique-gold to-crimson shadow-[0_0_10px_var(--crimson-glow)]"
+                          className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-amethyst to-crimson shadow-[0_0_10px_var(--crimson-glow)]"
                         />
                       )}
                       <Icon
-                        className={cn("size-4 shrink-0", active ? "text-antique-gold" : "text-text-3 group-hover:text-gold")}
+                        className={cn("size-4 shrink-0", active ? "text-amethyst" : "text-text-3 group-hover:text-amethyst")}
                         aria-hidden="true"
                       />
                       <span className="flex-1">{item.label}</span>
                       {item.badge != null && item.badge > 0 && (
-                        <span className="rounded-full bg-gold/15 px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-gold">
+                        <span className="rounded-full bg-amethyst/15 px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-amethyst">
                           {item.badge}
                         </span>
                       )}
@@ -166,7 +166,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         {/* Archive pulse — subtle decorative summary */}
         {!loading && (
           <div className="panel-glass hidden rounded-xl p-4 sm:block" aria-hidden="true">
-            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amethyst">
               <KeyRound className="size-3.5" /> Archive Index
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
@@ -193,7 +193,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
           <div className="flex items-center gap-3 rounded-lg px-2 py-2">
             <span
               aria-hidden="true"
-              className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold/35 bg-crimson/20 font-display text-sm font-bold text-gold"
+              className="flex size-9 shrink-0 items-center justify-center rounded-full border border-amethyst/35 bg-crimson/20 font-display text-sm font-bold text-amethyst"
             >
               {(user?.name ?? user?.email ?? "R")[0]?.toUpperCase()}
             </span>
@@ -219,7 +219,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
           <Link
             to="/auth?returnTo=%2Fdashboard"
             onClick={onNavigate}
-            className="btn-gold w-full px-4 py-2.5 text-sm"
+            className="btn-amethyst w-full px-4 py-2.5 text-sm"
           >
             <LogIn className="size-4" aria-hidden="true" />
             Enter the Archive

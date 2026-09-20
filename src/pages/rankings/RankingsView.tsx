@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
 
 const PODIUM_STYLES = [
   {
-    ring: "border-gold/55 shadow-[0_0_40px_-8px_var(--gold-glow)]",
-    chip: "bg-gold/15 text-[#f0dd9a] border-gold/55",
+    ring: "border-amethyst/55 shadow-[0_0_40px_-8px_var(--amethyst-glow)]",
+    chip: "bg-amethyst/15 text-[#dccbfb] border-amethyst/55",
     label: "1st",
     icon: Crown,
   },
@@ -22,8 +22,8 @@ const PODIUM_STYLES = [
     icon: Medal,
   },
   {
-    ring: "border-gold/35",
-    chip: "bg-gold/12 text-gold border-gold/35",
+    ring: "border-amethyst/35",
+    chip: "bg-amethyst/12 text-amethyst border-amethyst/35",
     label: "3rd",
     icon: Medal,
   },
@@ -48,10 +48,10 @@ function PodiumCard({ character, manhwaTitle, place }: { character: Character; m
       <span className={cn("absolute left-1/2 top-3 -translate-x-1/2 inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider", style.chip)}>
         <Icon className="size-3" aria-hidden="true" /> {style.label}
       </span>
-      <span className="media-zoom relative mt-4 block size-24 overflow-hidden rounded-full border-2 border-gold/25">
+      <span className="media-zoom relative mt-4 block size-24 overflow-hidden rounded-full border-2 border-amethyst/25">
         <CoverImage src={character.image_url} seed={character._id} ratio="portrait" alt="" />
       </span>
-      <span className="font-display text-lg font-bold text-parchment group-hover:text-gold">
+      <span className="font-display text-lg font-bold text-parchment group-hover:text-amethyst">
         {character.name}
       </span>
       <span className="text-xs text-text-3">{manhwaTitle}</span>
@@ -133,11 +133,11 @@ export default function RankingsView() {
                           <span className="font-display w-10 shrink-0 text-center text-xl font-bold tabular-nums text-text-3">
                             {globalIndex + 1}
                           </span>
-                          <span className="media-zoom size-12 shrink-0 overflow-hidden rounded-lg border border-gold/20">
+                          <span className="media-zoom size-12 shrink-0 overflow-hidden rounded-lg border border-amethyst/20">
                             <CoverImage src={c.image_url} seed={c._id} ratio="portrait" alt="" />
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block truncate font-semibold text-parchment group-hover:text-gold">
+                            <span className="block truncate font-semibold text-parchment group-hover:text-amethyst">
                               {c.name}
                             </span>
                             <span className="block truncate text-xs text-text-3">

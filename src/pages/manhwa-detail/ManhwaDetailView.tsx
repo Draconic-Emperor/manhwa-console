@@ -73,7 +73,7 @@ export default function ManhwaDetailView() {
         title="Record not found"
         hint="This entry has not been inscribed in the archive — it may have been struck from the records."
         action={
-          <Link to="/series" className="btn-gold px-5 py-2.5 text-sm">
+          <Link to="/series" className="btn-amethyst px-5 py-2.5 text-sm">
             <ArrowLeft className="size-4" aria-hidden="true" /> Back to the archive
           </Link>
         }
@@ -119,7 +119,7 @@ export default function ManhwaDetailView() {
 
         <div className="relative z-10 grid gap-8 p-6 sm:p-10 md:grid-cols-[200px_1fr]">
           <div className="hidden md:block">
-            <div className="media-zoom overflow-hidden rounded-xl border border-gold/25 shadow-[var(--shadow-card)]">
+            <div className="media-zoom overflow-hidden rounded-xl border border-amethyst/25 shadow-[var(--shadow-card)]">
               <div className="aspect-[2/3]">
                 <CoverImage
                   src={series.cover_image}
@@ -154,7 +154,7 @@ export default function ManhwaDetailView() {
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Classification</dt>
                 <dd className="mt-1">
-                  <Badge tone="gold">{series.genre ?? "Unclassified"}</Badge>
+                  <Badge tone="amethyst">{series.genre ?? "Unclassified"}</Badge>
                 </dd>
               </div>
               <div>
@@ -165,7 +165,7 @@ export default function ManhwaDetailView() {
               </div>
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Archive Rank</dt>
-                <dd className="font-display mt-1 font-bold tabular-nums text-[#f0dd9a]">#{series.rank}</dd>
+                <dd className="font-display mt-1 font-bold tabular-nums text-[#dccbfb]">#{series.rank}</dd>
               </div>
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Known Affiliations</dt>
@@ -185,7 +185,7 @@ export default function ManhwaDetailView() {
             </div>
 
             <div className="mt-1 flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => setCharOpen(true)} className="btn-gold px-5 py-2.5 text-sm">
+              <button type="button" onClick={() => setCharOpen(true)} className="btn-amethyst px-5 py-2.5 text-sm">
                 <UserPlus className="size-4" aria-hidden="true" /> Catalog entity
               </button>
               <button type="button" onClick={() => setEditOpen(true)} className="btn-ember px-5 py-2.5 text-sm">
@@ -208,7 +208,7 @@ export default function ManhwaDetailView() {
             <button
               type="button"
               onClick={() => setCharOpen(true)}
-              className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]"
+              className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]"
             >
               <UserPlus className="size-4" aria-hidden="true" /> Catalog entity
             </button>
@@ -260,7 +260,7 @@ export default function ManhwaDetailView() {
             kicker="Attached chronicles"
             title="Latest Chronicles"
             action={
-              <Link to="/chronicles" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+              <Link to="/chronicles" className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]">
                 All chronicles <ScrollText className="size-4" aria-hidden="true" />
               </Link>
             }
@@ -274,8 +274,8 @@ export default function ManhwaDetailView() {
                   to={character ? `/character/${character._id}` : "/chronicles"}
                   className="record hover-lift flex items-center gap-4 p-4"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-gold/30 bg-crimson/12">
-                    <ScrollText className="size-4 text-gold" aria-hidden="true" />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-amethyst/30 bg-crimson/12">
+                    <ScrollText className="size-4 text-amethyst" aria-hidden="true" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold text-parchment">{i.title}</span>

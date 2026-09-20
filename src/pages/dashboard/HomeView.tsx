@@ -76,7 +76,7 @@ function HeroCarousel({ series, charCounts }: { series: Manhwa[]; charCounts: Ma
 
         <div className="relative z-10 flex min-h-[380px] flex-col justify-end gap-5 p-6 sm:min-h-[420px] sm:p-10">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="gold">
+            <Badge tone="amethyst">
               <Sparkles className="size-3" aria-hidden="true" /> Featured Record
             </Badge>
             <StatusPill status={current.status} />
@@ -96,14 +96,14 @@ function HeroCarousel({ series, charCounts }: { series: Manhwa[]; charCounts: Ma
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-1.5 text-sm text-text-2">
-              <Users className="size-4 text-gold" aria-hidden="true" />
+              <Users className="size-4 text-amethyst" aria-hidden="true" />
               {charCounts.get(current._id) ?? 0} entities cataloged
             </span>
             <div className="flex flex-wrap gap-3">
               <button
                 type="button"
                 onClick={() => navigate(`/manhwa/${current._id}`)}
-                className="btn-gold px-5 py-2.5 text-sm"
+                className="btn-amethyst px-5 py-2.5 text-sm"
               >
                 Open the Record <ArrowRight className="size-4" aria-hidden="true" />
               </button>
@@ -130,7 +130,7 @@ function HeroCarousel({ series, charCounts }: { series: Manhwa[]; charCounts: Ma
                   onClick={() => setIndex(i)}
                   className={cn(
                     "h-2 rounded-full border border-parchment/25 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    i === index ? "w-8 bg-gold" : "w-2 bg-parchment/25 hover:bg-parchment/45",
+                    i === index ? "w-8 bg-amethyst" : "w-2 bg-parchment/25 hover:bg-parchment/45",
                   )}
                 />
               ))}
@@ -243,7 +243,7 @@ export default function HomeView() {
           title="The archive awaits its first record"
           hint="No series or entities are sealed here yet. Open the vault: inscribe the first series and awaken the console."
           action={
-            <button type="button" className="btn-gold px-5 py-2.5 text-sm" onClick={() => setManhwaForm(true)}>
+            <button type="button" className="btn-amethyst px-5 py-2.5 text-sm" onClick={() => setManhwaForm(true)}>
               <BookOpen className="size-4" aria-hidden="true" /> Inscribe a series
             </button>
           }
@@ -255,11 +255,11 @@ export default function HomeView() {
           {/* Stats */}
           <section aria-label="Archive statistics">
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <StatCard icon={<BookOpen className="size-4 text-gold" aria-hidden="true" />} label="Records" value={String(manhwa.length)} sub="series in the archive" to="/series" />
+              <StatCard icon={<BookOpen className="size-4 text-amethyst" aria-hidden="true" />} label="Records" value={String(manhwa.length)} sub="series in the archive" to="/series" />
               <StatCard icon={<Users className="size-4 text-crimson" aria-hidden="true" />} label="Entities" value={String(characters.length)} sub="cataloged profiles" to="/characters" />
-              <StatCard icon={<ScrollText className="size-4 text-gold" aria-hidden="true" />} label="Chronicles" value={String(insights.length)} sub="researcher entries" to="/chronicles" />
+              <StatCard icon={<ScrollText className="size-4 text-amethyst" aria-hidden="true" />} label="Chronicles" value={String(insights.length)} sub="researcher entries" to="/chronicles" />
               <StatCard
-                icon={<Star className="size-4 text-gold" aria-hidden="true" />}
+                icon={<Star className="size-4 text-amethyst" aria-hidden="true" />}
                 label="Highest ranked"
                 value={topCharacters[0]?.name ?? "—"}
                 sub={topCharacters[0] ? `Rank #${topCharacters[0].rank} · ${topCharacters[0].role}` : "no entities yet"}
@@ -284,7 +284,7 @@ export default function HomeView() {
               kicker="Newly sealed"
               title="Recently Inscribed Records"
               action={
-                <Link to="/series" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+                <Link to="/series" className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]">
                   View all <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               }
@@ -307,7 +307,7 @@ export default function HomeView() {
               kicker="Power registry"
               title="Highest Ranked Entities"
               action={
-                <Link to="/rankings" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+                <Link to="/rankings" className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]">
                   Full rankings <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               }
@@ -337,7 +337,7 @@ export default function HomeView() {
               kicker="From the researchers"
               title="Latest Chronicles"
               action={
-                <Link to="/chronicles" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+                <Link to="/chronicles" className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]">
                   All chronicles <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               }
@@ -364,7 +364,7 @@ export default function HomeView() {
               kicker="Sealed in your vault"
               title="Your Collection"
               action={
-                <Link to="/collections" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+                <Link to="/collections" className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]">
                   Collections <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               }
@@ -437,7 +437,7 @@ function QuickAction({
       onClick={onClick}
       className="record hover-lift group flex items-center gap-3.5 p-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-crimson/12 text-gold transition-all group-hover:shadow-[0_0_18px_-4px_var(--crimson-glow)]">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-amethyst/30 bg-crimson/12 text-amethyst transition-all group-hover:shadow-[0_0_18px_-4px_var(--crimson-glow)]">
         <Icon className="size-5" aria-hidden="true" />
       </span>
       <span className="min-w-0">
@@ -462,7 +462,7 @@ function SpotlightPanel({ character, manhwa }: { character: Character; manhwa?: 
         <div className="relative flex flex-col justify-center gap-3 p-6 sm:p-8">
           <div aria-hidden="true" className="absolute -right-10 -top-10 size-40 rounded-full bg-crimson/15 blur-3xl" />
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="gold">
+            <Badge tone="amethyst">
               <Trophy className="size-3" aria-hidden="true" /> Rank #{character.rank}
             </Badge>
             <Badge tone="crimson">{character.role}</Badge>
@@ -475,7 +475,7 @@ function SpotlightPanel({ character, manhwa }: { character: Character; manhwa?: 
             <button
               type="button"
               onClick={() => navigate(`/character/${character._id}`)}
-              className="btn-gold px-5 py-2.5 text-sm"
+              className="btn-amethyst px-5 py-2.5 text-sm"
             >
               Open entity record <ArrowRight className="size-4" aria-hidden="true" />
             </button>

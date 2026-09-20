@@ -29,7 +29,7 @@ export function ManhwaCard({ manhwa, charCount }: { manhwa: Manhwa; charCount: n
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1.5 p-3.5">
-        <h3 className="font-display line-clamp-2 text-[15px] font-semibold leading-snug text-parchment transition-colors group-hover:text-gold">
+        <h3 className="font-display line-clamp-2 text-[15px] font-semibold leading-snug text-parchment transition-colors group-hover:text-amethyst">
           {manhwa.title}
         </h3>
         <p className="truncate text-xs text-text-3">{manhwa.author}</p>
@@ -45,7 +45,7 @@ export function ManhwaCard({ manhwa, charCount }: { manhwa: Manhwa; charCount: n
             </span>
           )}
           <span className="ml-auto inline-flex items-center gap-1 tabular-nums" title="Archive rank">
-            <Star className="size-3.5 text-gold" aria-hidden="true" />#{manhwa.rank}
+            <Star className="size-3.5 text-amethyst" aria-hidden="true" />#{manhwa.rank}
           </span>
         </div>
       </div>

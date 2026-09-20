@@ -34,7 +34,7 @@ export function CharacterCard({
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1 p-3">
-        <h3 className="font-display truncate text-sm font-semibold text-parchment transition-colors group-hover:text-gold">
+        <h3 className="font-display truncate text-sm font-semibold text-parchment transition-colors group-hover:text-amethyst">
           {character.name}
         </h3>
         <p className="truncate text-xs text-text-3">

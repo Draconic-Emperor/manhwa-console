@@ -59,7 +59,7 @@ export default function CollectionsView() {
           title="Your vault is empty"
           hint="Touch the heart on any record or entity to seal them into your collection."
           action={
-            <Link to="/series" className="btn-gold px-5 py-2.5 text-sm">
+            <Link to="/series" className="btn-amethyst px-5 py-2.5 text-sm">
               <Heart className="size-4" aria-hidden="true" /> Discover records
             </Link>
           }
@@ -70,9 +70,9 @@ export default function CollectionsView() {
           <section aria-label="Collection summary" className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             <SummaryTile icon={<Heart className="size-4 text-[#f2b8bb]" aria-hidden="true" />} label="Sealed records" value={favoriteManhwa.length} />
             <SummaryTile icon={<Users className="size-4 text-crimson" aria-hidden="true" />} label="Sealed entities" value={favoriteCharacters.length} />
-            <SummaryTile icon={<FolderHeart className="size-4 text-gold" aria-hidden="true" />} label="Total keepsakes" value={total} />
+            <SummaryTile icon={<FolderHeart className="size-4 text-amethyst" aria-hidden="true" />} label="Total keepsakes" value={total} />
             <SummaryTile
-              icon={<span aria-hidden="true" className="text-xs font-bold text-gold">✦</span>}
+              icon={<span aria-hidden="true" className="text-xs font-bold text-amethyst">✦</span>}
               label="Archive size"
               value={manhwa.length + characters.length}
             />

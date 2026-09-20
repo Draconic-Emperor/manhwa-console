@@ -69,7 +69,7 @@ export default function CharacterDetailView() {
         title="Entity record not found"
         hint="This entity is not cataloged in the archive — the record may have been struck."
         action={
-          <Link to="/characters" className="btn-gold px-5 py-2.5 text-sm">
+          <Link to="/characters" className="btn-amethyst px-5 py-2.5 text-sm">
             <ArrowLeft className="size-4" aria-hidden="true" /> Back to the registry
           </Link>
         }
@@ -157,7 +157,7 @@ export default function CharacterDetailView() {
                   {manhwa ? (
                     <Link
                       to={`/manhwa/${manhwa._id}`}
-                      className="font-medium text-gold underline-offset-4 hover:underline"
+                      className="font-medium text-amethyst underline-offset-4 hover:underline"
                     >
                       {manhwa.title}
                     </Link>
@@ -169,7 +169,7 @@ export default function CharacterDetailView() {
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Archive Rank</dt>
                 <dd className="mt-1 flex items-center gap-2">
-                  <Badge tone="gold">
+                  <Badge tone="amethyst">
                     <Trophy className="size-3" aria-hidden="true" /> Rank #{character.rank}
                   </Badge>
                   <span className={cn("text-[11px] font-bold uppercase tracking-[0.2em]", tier.text)}>
@@ -201,13 +201,13 @@ export default function CharacterDetailView() {
                   "inline-flex items-center gap-2 rounded-md border px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   saved
                     ? "border-crimson/60 bg-crimson/20 text-[#f2b8bb] shadow-[0_0_18px_-6px_var(--crimson-glow)]"
-                    : "border-gold/35 bg-void/60 text-parchment hover:border-crimson/50 hover:text-[#f2b8bb]",
+                    : "border-amethyst/35 bg-void/60 text-parchment hover:border-crimson/50 hover:text-[#f2b8bb]",
                 )}
               >
                 <Heart className={cn("size-4", saved && "fill-current")} aria-hidden="true" />
                 {saved ? "Sealed in vault" : "Seal in vault"}
               </button>
-              <button type="button" onClick={() => setInsightOpen(true)} className="btn-gold px-5 py-2.5 text-sm">
+              <button type="button" onClick={() => setInsightOpen(true)} className="btn-amethyst px-5 py-2.5 text-sm">
                 <Quote className="size-4" aria-hidden="true" /> Seal a chronicle
               </button>
               <button type="button" onClick={() => setEditOpen(true)} className="btn-ember px-5 py-2.5 text-sm">
@@ -230,7 +230,7 @@ export default function CharacterDetailView() {
             <button
               type="button"
               onClick={() => setInsightOpen(true)}
-              className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]"
+              className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]"
             >
               <UserPlus className="size-4" aria-hidden="true" /> Add entry
             </button>
@@ -269,7 +269,7 @@ export default function CharacterDetailView() {
                         setEditingInsight(i);
                         setInsightOpen(true);
                       }}
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-medium text-text-3 transition-colors hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-medium text-text-3 transition-colors hover:text-amethyst focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <Pencil className="size-3.5" aria-hidden="true" /> Amend
                     </button>
@@ -290,7 +290,7 @@ export default function CharacterDetailView() {
             action={
               <Link
                 to={`/manhwa/${manhwa._id}`}
-                className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]"
+                className="inline-flex items-center gap-1 text-sm font-medium text-amethyst hover:text-[#dccbfb]"
               >
                 Open archive entry
               </Link>

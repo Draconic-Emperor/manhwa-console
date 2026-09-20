@@ -96,22 +96,22 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       <div className="console-particles" aria-hidden="true" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-1 items-center justify-center px-4 py-10 sm:px-6 lg:px-10">
-        <div className="grid w-full gap-0 overflow-hidden rounded-2xl border border-gold/20 bg-void/70 shadow-[var(--shadow-pop)] backdrop-blur lg:grid-cols-2">
+        <div className="grid w-full gap-0 overflow-hidden rounded-2xl border border-amethyst/20 bg-void/70 shadow-[var(--shadow-pop)] backdrop-blur lg:grid-cols-2">
           {/* Archive panel */}
           <aside className="relative hidden flex-col justify-between gap-8 border-r border-border p-10 lg:flex" aria-hidden="true">
             <div
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(36rem 28rem at 20% 0%, var(--crimson-soft), transparent 60%), radial-gradient(30rem 24rem at 90% 100%, var(--gold-soft), transparent 60%)",
+                  "radial-gradient(36rem 28rem at 20% 0%, var(--crimson-soft), transparent 60%), radial-gradient(30rem 24rem at 90% 100%, var(--amethyst-soft), transparent 60%)",
               }}
             />
             <div className="relative">
-              <span className="relative flex size-12 items-center justify-center rounded-2xl border border-gold/35 bg-obsidian shadow-[0_0_24px_-6px_var(--crimson-glow)]">
+              <span className="relative flex size-12 items-center justify-center rounded-2xl border border-amethyst/35 bg-obsidian shadow-[0_0_24px_-6px_var(--crimson-glow)]">
                 <ConsoleSeal className="size-7" />
               </span>
               <p className="font-display mt-6 text-3xl font-bold leading-tight text-parchment">
-                Access the Archive. <span className="text-gradient-gold">Uncover Legends.</span>
+                Access the Archive. <span className="text-gradient-amethyst">Uncover Legends.</span>
               </p>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-2">
                 Inscribe records, catalog entities, settle rankings, and seal chronicles — the
@@ -120,11 +120,11 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
             </div>
             <ul className="relative space-y-4 text-sm text-text-2">
               <li className="flex items-start gap-3">
-                <BookOpen className="mt-0.5 size-4 shrink-0 text-gold" />
+                <BookOpen className="mt-0.5 size-4 shrink-0 text-amethyst" />
                 A forbidden archive of series and their full casts
               </li>
               <li className="flex items-start gap-3">
-                <Trophy className="mt-0.5 size-4 shrink-0 text-gold" />
+                <Trophy className="mt-0.5 size-4 shrink-0 text-amethyst" />
                 Researcher-settled rankings in four tiers
               </li>
               <li className="flex items-start gap-3">
@@ -137,7 +137,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
           {/* Form panel */}
           <div className="relative flex flex-col justify-center gap-6 p-6 sm:p-10">
             <div className="flex flex-col items-start gap-4 lg:items-center">
-              <span className="flex size-10 items-center justify-center rounded-xl border border-gold/30 bg-void lg:hidden">
+              <span className="flex size-10 items-center justify-center rounded-xl border border-amethyst/30 bg-void lg:hidden">
                 <ConsoleSeal className="size-5" />
               </span>
               <h1 className="font-display text-2xl font-bold tracking-tight text-parchment">
@@ -178,7 +178,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     </p>
                   )}
 
-                  <Button type="submit" disabled={isLoading} className="btn-gold w-full py-2.5">
+                  <Button type="submit" disabled={isLoading} className="btn-amethyst w-full py-2.5">
                     {isLoading ? (
                       <Loader2 className="size-4 animate-spin" aria-hidden="true" />
                     ) : (
@@ -242,7 +242,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                   </p>
                 )}
 
-                <Button type="submit" className="btn-gold w-full py-2.5" disabled={isLoading || otp.length !== 6}>
+                <Button type="submit" className="btn-amethyst w-full py-2.5" disabled={isLoading || otp.length !== 6}>
                   {isLoading ? (
                     <>
                       <Loader2 className="size-4 animate-spin" aria-hidden="true" /> Verifying…
@@ -257,7 +257,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <div className="flex flex-col gap-2 text-center text-sm">
                   <button
                     type="button"
-                    className="rounded font-medium text-gold transition-colors hover:text-[#f0dd9a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="rounded font-medium text-amethyst transition-colors hover:text-[#dccbfb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setStep("signIn")}
                     disabled={isLoading}
                   >

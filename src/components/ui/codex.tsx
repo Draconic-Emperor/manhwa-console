@@ -11,15 +11,15 @@ export function Badge({
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "neutral" | "gold" | "crimson" | "ember" | "moss" | "warning" | "danger";
+  tone?: "neutral" | "amethyst" | "crimson" | "ember" | "moss" | "warning" | "danger";
 }) {
   const tones: Record<string, string> = {
     neutral: "border-white/10 bg-white/5 text-text-2",
-    gold: "border-gold/35 bg-gold/12 text-gold",
+    amethyst: "border-amethyst/35 bg-amethyst/12 text-amethyst",
     crimson: "border-crimson/50 bg-crimson/15 text-[#e59aa3]",
     ember: "border-crimson/60 bg-crimson/20 text-[#f2b8bb]",
     moss: "border-[#7d9c6a]/40 bg-[#7d9c6a]/12 text-[#a9c494]",
-    warning: "border-gold/45 bg-gold/15 text-[#e8c96a]",
+    warning: "border-amethyst/45 bg-amethyst/15 text-[#cdb9fa]",
     danger: "border-[#e5484d]/40 bg-[#e5484d]/12 text-[#f2b8bb]",
   };
   return (
@@ -40,11 +40,11 @@ export function Badge({
 export function RankBadge({ rank, className }: { rank: number; className?: string }) {
   const tier =
     rank <= 10
-      ? { label: "Mythic", cls: "border-gold/55 bg-gold/15 text-[#f0dd9a]", ring: "shadow-[0_0_14px_-2px_var(--gold-glow)]" }
+      ? { label: "Mythic", cls: "border-amethyst/55 bg-amethyst/15 text-[#dccbfb]", ring: "shadow-[0_0_14px_-2px_var(--amethyst-glow)]" }
       : rank <= 25
         ? { label: "Legendary", cls: "border-crimson/60 bg-crimson/18 text-[#eda3ac]", ring: "shadow-[0_0_14px_-4px_var(--crimson-glow)]" }
         : rank <= 50
-          ? { label: "Elite", cls: "border-gold/35 bg-gold/10 text-gold", ring: "" }
+          ? { label: "Elite", cls: "border-amethyst/35 bg-amethyst/10 text-amethyst", ring: "" }
           : { label: "Rising", cls: "border-white/15 bg-white/5 text-text-2", ring: "" };
 
   return (
@@ -129,7 +129,7 @@ export function EmptyState({
     >
       <div
         aria-hidden="true"
-        className="flex size-14 items-center justify-center rounded-2xl border border-gold/30 bg-crimson/10 text-gold shadow-[0_0_30px_-8px_var(--crimson-glow)]"
+        className="flex size-14 items-center justify-center rounded-2xl border border-amethyst/30 bg-crimson/10 text-amethyst shadow-[0_0_30px_-8px_var(--crimson-glow)]"
       >
         {icon}
       </div>

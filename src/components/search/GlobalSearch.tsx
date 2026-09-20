@@ -82,13 +82,13 @@ export function GlobalSearch() {
       description="Search forbidden records: series, entities, and chronicles."
       open={open}
       onOpenChange={setOpen}
-      className="top-[8%] max-w-xl translate-y-0 overflow-hidden border-gold/30 bg-void shadow-[var(--shadow-pop)] data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
+      className="top-[8%] max-w-xl translate-y-0 overflow-hidden border-amethyst/30 bg-void shadow-[var(--shadow-pop)] data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
     >
       <CommandInput placeholder="Query the Archive…" value={query} onValueChange={setQuery} />
       <CommandList className="max-h-[min(60vh,420px)]">
         <CommandEmpty>
           <div className="flex flex-col items-center gap-2 py-8 text-center">
-            <Sparkles className="size-6 text-gold" aria-hidden="true" />
+            <Sparkles className="size-6 text-amethyst" aria-hidden="true" />
             <p className="text-sm font-medium">No records match your query.</p>
             <p className="text-xs text-text-3">Try another name, or browse the archive directly.</p>
           </div>
@@ -98,7 +98,7 @@ export function GlobalSearch() {
           <CommandGroup heading="Navigate">
             {pages.map((p) => (
               <CommandItem key={p.to} value={`page ${p.label}`} onSelect={() => go(p.to)}>
-                <Sparkles className="size-4 text-gold" aria-hidden="true" />
+                <Sparkles className="size-4 text-amethyst" aria-hidden="true" />
                 {p.label}
               </CommandItem>
             ))}
@@ -111,7 +111,7 @@ export function GlobalSearch() {
             <CommandGroup heading="Series">
               {seriesHits.map((m) => (
                 <CommandItem key={m._id} value={`series ${m.title} ${m.author}`} onSelect={() => go(`/manhwa/${m._id}`)}>
-                  <BookOpen className="size-4 text-gold" aria-hidden="true" />
+                  <BookOpen className="size-4 text-amethyst" aria-hidden="true" />
                   <span className="flex-1 truncate">{m.title}</span>
                   <span className="text-xs text-text-3">Rank #{m.rank}</span>
                 </CommandItem>
@@ -147,7 +147,7 @@ export function GlobalSearch() {
                     value={`insight ${i.title} ${i.content}`}
                     onSelect={() => go(`/character/${i.character_id}`)}
                   >
-                    <ScrollText className="size-4 text-gold" aria-hidden="true" />
+                    <ScrollText className="size-4 text-amethyst" aria-hidden="true" />
                     <span className="flex-1 truncate">{i.title}</span>
                     {character && <span className="text-xs text-text-3">{character.name}</span>}
                   </CommandItem>

@@ -56,7 +56,7 @@ export const STATUS_LABEL: Record<ManhwaStatus, string> = {
 export const STATUS_CLASS: Record<ManhwaStatus, string> = {
   ongoing: "bg-crimson/15 text-[#e59aa3] border-crimson/40",
   completed: "bg-[#7d9c6a]/12 text-[#a9c494] border-[#7d9c6a]/35",
-  hiatus: "bg-gold/12 text-[#e8c96a] border-gold/35",
+  hiatus: "bg-amethyst/12 text-[#cdb9fa] border-amethyst/35",
 };
 
 export const INSIGHT_LABEL: Record<InsightType, string> = {
@@ -68,7 +68,7 @@ export const INSIGHT_LABEL: Record<InsightType, string> = {
 
 export const INSIGHT_CLASS: Record<InsightType, string> = {
   theory: "bg-crimson/15 text-[#eda3ac] border-crimson/45",
-  review: "bg-gold/12 text-gold border-gold/35",
+  review: "bg-amethyst/12 text-amethyst border-amethyst/35",
   lore: "bg-[#7d9c6a]/12 text-[#a9c494] border-[#7d9c6a]/35",
   analysis: "bg-white/6 text-text-2 border-white/12",
 };
@@ -84,10 +84,10 @@ export function rankTier(rank: number): {
   if (rank <= 10)
     return {
       label: "Mythic",
-      text: "text-[#f0dd9a]",
-      border: "border-gold/45",
-      bg: "bg-gold/12",
-      glow: "shadow-[0_0_18px_-4px_var(--gold-glow)]",
+      text: "text-[#dccbfb]",
+      border: "border-amethyst/45",
+      bg: "bg-amethyst/12",
+      glow: "shadow-[0_0_18px_-4px_var(--amethyst-glow)]",
     };
   if (rank <= 25)
     return {
@@ -100,9 +100,9 @@ export function rankTier(rank: number): {
   if (rank <= 50)
     return {
       label: "Elite",
-      text: "text-gold",
-      border: "border-gold/35",
-      bg: "bg-gold/10",
+      text: "text-amethyst",
+      border: "border-amethyst/35",
+      bg: "bg-amethyst/10",
       glow: "",
     };
   return {
@@ -144,11 +144,11 @@ export function fullDate(ts: number): string {
 /** Deterministic tailwind gradient class pair for fallback panels. */
 export function auraFor(seed: string): string {
   const options = [
-    "from-crimson/30 via-gold/8 to-transparent",
-    "from-gold/20 via-crimson/10 to-transparent",
+    "from-crimson/30 via-amethyst/8 to-transparent",
+    "from-amethyst/20 via-crimson/10 to-transparent",
     "from-[#7d9c6a]/20 via-crimson/10 to-transparent",
-    "from-crimson/25 via-gold/6 to-transparent",
-    "from-gold/15 via-crimson/12 to-transparent",
+    "from-crimson/25 via-amethyst/6 to-transparent",
+    "from-amethyst/15 via-crimson/12 to-transparent",
   ];
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;

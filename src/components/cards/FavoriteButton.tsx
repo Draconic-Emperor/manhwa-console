@@ -36,7 +36,7 @@ export function FavoriteButton({
         "inline-flex size-9 items-center justify-center rounded-full border backdrop-blur transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         saved
           ? "border-crimson/60 bg-crimson/25 text-[#f2b8bb] shadow-[0_0_16px_-4px_var(--crimson-glow)]"
-          : "border-gold/30 bg-obsidian/60 text-parchment/85 hover:border-crimson/50 hover:text-[#f2b8bb]",
+          : "border-amethyst/30 bg-obsidian/60 text-parchment/85 hover:border-crimson/50 hover:text-[#f2b8bb]",
         pop && "record-pop",
         className,
       )}

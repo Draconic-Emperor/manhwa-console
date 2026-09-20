@@ -34,11 +34,11 @@ export function InsightCard({
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
         <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs">
-          <Quote className="size-3.5 text-gold" aria-hidden="true" />
+          <Quote className="size-3.5 text-amethyst" aria-hidden="true" />
           {character ? (
             <Link
               to={`/character/${character._id}`}
-              className="truncate font-medium text-parchment underline-offset-4 hover:text-gold hover:underline"
+              className="truncate font-medium text-parchment underline-offset-4 hover:text-amethyst hover:underline"
             >
               {character.name}
             </Link>
@@ -55,7 +55,7 @@ export function InsightCard({
         {character && (
           <Link
             to={`/character/${character._id}`}
-            className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-gold transition-colors hover:text-[#f0dd9a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-amethyst transition-colors hover:text-[#dccbfb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={`Open the entity record for ${character.name}`}
           >
             Entity record

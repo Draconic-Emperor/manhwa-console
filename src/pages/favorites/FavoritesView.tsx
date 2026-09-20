@@ -53,7 +53,7 @@ export default function FavoritesView() {
           title="Nothing sealed yet"
           hint="Touch the heart on any entity or record to keep them close."
           action={
-            <Link to="/characters" className="btn-gold px-5 py-2.5 text-sm">
+            <Link to="/characters" className="btn-amethyst px-5 py-2.5 text-sm">
               <Users className="size-4" aria-hidden="true" /> Browse entities
             </Link>
           }

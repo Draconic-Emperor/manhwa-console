@@ -53,13 +53,13 @@ export default function AboutView() {
       <section aria-label="The console seal" className="record relative overflow-hidden p-8 sm:p-10">
         <div aria-hidden="true" className="absolute -right-16 -top-16 size-64 rounded-full bg-crimson/15 blur-3xl" />
         <div className="relative flex flex-col items-center gap-4 text-center">
-          <span className="flex size-16 items-center justify-center rounded-2xl border border-gold/35 bg-void shadow-[0_0_30px_-8px_var(--crimson-glow)]">
+          <span className="flex size-16 items-center justify-center rounded-2xl border border-amethyst/35 bg-void shadow-[0_0_30px_-8px_var(--crimson-glow)]">
             <ConsoleSeal className="size-9" />
           </span>
           <h2 className="font-display text-2xl font-bold text-parchment">The seal's meaning</h2>
           <p className="max-w-2xl text-sm leading-relaxed text-text-2">
             The stylized M stands for the archive itself — two pillars of records joined by a single
-            apex of knowledge. The gold ring marks a researcher's oath to keep what they find; the
+            apex of knowledge. The amethyst ring marks a researcher's oath to keep what they find; the
             crimson line beneath marks the forbidden knowledge sealed within. Written down is
             knowledge that survives.
           </p>
@@ -75,7 +75,7 @@ export default function AboutView() {
             const Icon = f.icon;
             return (
               <article key={f.title} className="record hover-lift p-5">
-                <span className="flex size-10 items-center justify-center rounded-xl border border-gold/30 bg-crimson/12 text-gold">
+                <span className="flex size-10 items-center justify-center rounded-xl border border-amethyst/30 bg-crimson/12 text-amethyst">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display mt-4 text-base font-semibold text-parchment">{f.title}</h3>
@@ -92,22 +92,22 @@ export default function AboutView() {
         </h2>
         <ol className="mt-4 space-y-3 text-sm leading-relaxed text-text-2">
           <li className="flex gap-3">
-            <span aria-hidden="true" className="font-display font-bold text-gold">I.</span>
+            <span aria-hidden="true" className="font-display font-bold text-amethyst">I.</span>
             Record faithfully — an archive is only as strong as its accuracy.
           </li>
           <li className="flex gap-3">
-            <span aria-hidden="true" className="font-display font-bold text-gold">II.</span>
+            <span aria-hidden="true" className="font-display font-bold text-amethyst">II.</span>
             Rank with respect — the ladder reflects community standing, not gatekeeping.
           </li>
           <li className="flex gap-3">
-            <span aria-hidden="true" className="font-display font-bold text-gold">III.</span>
+            <span aria-hidden="true" className="font-display font-bold text-amethyst">III.</span>
             Share generously — chronicles are meant to be read, debated, and built upon.
           </li>
         </ol>
       </section>
 
       <section className="flex flex-wrap items-center justify-center gap-3">
-        <a href="/series" className="btn-gold px-5 py-2.5 text-sm">
+        <a href="/series" className="btn-amethyst px-5 py-2.5 text-sm">
           <BookOpen className="size-4" aria-hidden="true" /> Browse the records
         </a>
         <a href="/rankings" className="btn-ember px-5 py-2.5 text-sm">
