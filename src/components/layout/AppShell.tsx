@@ -63,7 +63,13 @@ export function AppShell({ children }: { children: ReactNode }) {
     try {
       await ensureAuth();
       const result = await seed({});
-      if (result?.seeded) toast.success("The archive is open — sealed records inscribed.");
+      if (result?.seeded) {
+        toast.success(
+          result.upgraded
+            ? "The archive has been re-sealed with the true roster."
+            : "The archive is open — sealed records inscribed.",
+        );
+      }
     } catch (e) {
       console.warn("Archive seed skipped:", e);
     }
