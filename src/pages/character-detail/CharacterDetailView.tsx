@@ -7,6 +7,7 @@ import {
   Quote,
   ScrollText,
   Trophy,
+  Trash2,
   UserPlus,
   Users,
 } from "lucide-react";
@@ -214,7 +215,7 @@ export default function CharacterDetailView() {
                 <Pencil className="size-4" aria-hidden="true" /> Amend record
               </button>
               <button type="button" onClick={() => setConfirmDelete(true)} className="btn-ember-danger px-5 py-2.5 text-sm">
-                <ScrollText className="size-4" aria-hidden="true" /> Strike record
+                <Trash2 className="size-4" aria-hidden="true" /> Strike record
               </button>
             </div>
           </div>

@@ -24,7 +24,6 @@ import { CharacterFormDialog } from "@/components/forms/CharacterFormDialog";
 import { InsightFormDialog } from "@/components/forms/InsightFormDialog";
 import { ConfirmDialog } from "@/components/forms/ConfirmDialog";
 import { useCodex, useEnsureAuth } from "@/hooks/use-codex";
-import { cn } from "@/lib/utils";
 
 export default function ManhwaDetailView() {
   const { id } = useParams<{ id: string }>();
@@ -194,6 +193,9 @@ export default function ManhwaDetailView() {
               <button type="button" onClick={() => setConfirmOpen(true)} className="btn-ember-danger px-5 py-2.5 text-sm">
                 <Trash2 className="size-4" aria-hidden="true" /> Strike record
               </button>
+              <button type="button" onClick={() => setInsightOpen(true)} className="btn-ember px-5 py-2.5 text-sm">
+                <ScrollText className="size-4" aria-hidden="true" /> Seal a chronicle
+              </button>
             </div>
           </div>
         </div>
@@ -317,30 +319,6 @@ export default function ManhwaDetailView() {
         loading={deleting}
         onConfirm={() => void handleDelete()}
       />
-    </div>
-  );
-}
-
-function StatTile({
-  icon,
-  label,
-  value,
-  className,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  className?: string;
-}) {
-  return (
-    <div className={cn("record p-5", className)}>
-      <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-text-3">
-        {icon}
-        {label}
-      </div>
-      <p className="font-display mt-3 truncate text-xl font-bold tabular-nums text-parchment" title={value}>
-        {value}
-      </p>
     </div>
   );
 }

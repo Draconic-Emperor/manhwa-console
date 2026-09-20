@@ -47,6 +47,7 @@ export function InsightFormDialog({
 }) {
   const isEdit = Boolean(editing);
   const add = useMutation(api.insightMutations.addInsight);
+  const edit = useMutation(api.insightMutations.editInsight);
   const remove = useMutation(api.insightMutations.deleteInsight);
   const ensureAuth = useEnsureAuth();
 
@@ -84,16 +85,28 @@ export function InsightFormDialog({
     setSaving(true);
     try {
       await ensureAuth();
-      await add({
-        character_id: characterId as Insight["character_id"],
-        type,
-        title: title.trim(),
-        content: content.trim(),
-      });
-      toast.success("Insight sealed into the codex.");
+      if (isEdit && editing) {
+        await edit({
+          id: editing._id,
+          type,
+          title: title.trim(),
+          content: content.trim(),
+        });
+        toast.success("Chronicle amended — the archive remembers.");
+      } else {
+        await add({
+          character_id: characterId as Insight["character_id"],
+          type,
+          title: title.trim(),
+          content: content.trim(),
+        });
+        toast.success("Chronicle sealed into the archive.");
+        onOpenChange(false);
+        return;
+      }
       onOpenChange(false);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to save the insight.");
+      toast.error(err instanceof Error ? err.message : "Failed to save the chronicle.");
     } finally {
       setSaving(false);
     }
@@ -107,22 +120,26 @@ export function InsightFormDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto border-border bg-surface sm:max-w-lg">
+      <DialogContent className="max-h-[90vh] overflow-y-auto border-border bg-popover sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="font-display text-xl">
-            {isEdit ? "Edit insight" : "Share an insight"}
+            {isEdit ? "Amend the chronicle" : "Seal a chronicle"}
           </DialogTitle>
           <DialogDescription>
-            Theories, lore breakdowns, reviews — add your knowledge to the codex.
+            Theories, lore breakdowns, reviews — add your knowledge to the archive.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={submit} className="space-y-5" noValidate>
           <div className="space-y-1.5">
-            <Label htmlFor="in-char">Character *</Label>
-            <Select value={characterId || undefined} onValueChange={setCharacterId}>
+            <Label htmlFor="in-char">Entity *</Label>
+            <Select
+              value={characterId || undefined}
+              onValueChange={setCharacterId}
+              disabled={isEdit}
+            >
               <SelectTrigger id="in-char" className="w-full">
-                <SelectValue placeholder="Choose a character" />
+                <SelectValue placeholder="Choose an entity" />
               </SelectTrigger>
               <SelectContent className="border-border bg-popover">
                 {Object.entries(grouped).map(([seriesTitle, list]) => (
@@ -137,6 +154,11 @@ export function InsightFormDialog({
                 ))}
               </SelectContent>
             </Select>
+            {isEdit && (
+              <p className="text-xs text-text-3">
+                The entity a chronicle belongs to cannot be changed — strike and re-seal instead.
+              </p>
+            )}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -167,7 +189,7 @@ export function InsightFormDialog({
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="in-content">Your insight *</Label>
+            <Label htmlFor="in-content">Your chronicle *</Label>
             <Textarea
               id="in-content"
               rows={6}
@@ -190,10 +212,10 @@ export function InsightFormDialog({
                   try {
                     await ensureAuth();
                     await remove({ id: editing._id });
-                    toast.success("Insight removed from the chronicle.");
+                    toast.success("Chronicle struck from the archive.");
                     onOpenChange(false);
                   } catch {
-                    toast.error("Failed to remove the insight.");
+                    toast.error("Failed to remove the chronicle.");
                   }
                 }}
               >
@@ -205,7 +227,7 @@ export function InsightFormDialog({
             </Button>
             <Button type="submit" disabled={saving} className="btn-amethyst">
               {saving && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
-              {isEdit ? "Save changes" : "Seal insight"}
+              {isEdit ? "Save changes" : "Seal chronicle"}
             </Button>
           </DialogFooter>
         </form>

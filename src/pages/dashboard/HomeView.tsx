@@ -166,7 +166,7 @@ function StatCard({
     >
       <div
         aria-hidden="true"
-        className="absolute -right-6 -top-6 size-24 rounded-full bg-crimson/15 blur-2xl transition-opacity group-hover:opacity-150"
+        className="group-hover:opacity-100 absolute -right-6 -top-6 size-24 rounded-full bg-crimson/15 blur-2xl transition-opacity opacity-60"
       />
       <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-text-3">
         {icon}

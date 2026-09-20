@@ -122,7 +122,7 @@ export default function Landing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-4xl px-4 py-24 text-center sm:px-6">
-            <div className="rise-in flex justify-center">
+            <div className="sigil-rise flex justify-center">
               <span className="relative flex size-20 items-center justify-center rounded-3xl border border-amethyst/35 bg-void/80 shadow-[0_0_60px_-12px_var(--crimson-glow)]">
                 <ConsoleSeal className="size-12" />
               </span>

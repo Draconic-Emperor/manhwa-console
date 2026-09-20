@@ -2,6 +2,7 @@
  * Deterministic generative artwork for missing images.
  * Same seed always produces the same arcane gradient + constellation,
  * so every series/character gets stable "cover art" without any backend.
+ * Palettes stay inside the console's crimson + amethyst spectrum.
  */
 
 export function hashSeed(input: string): number {
@@ -26,14 +27,14 @@ function mulberry32(seed: number) {
 export type ArtPalette = { from: string; to: string };
 
 const PALETTES: ArtPalette[] = [
-  { from: "#8B5CF6", to: "#E879F9" },
-  { from: "#7C3AED", to: "#3B82F6" },
-  { from: "#EC4899", to: "#8B5CF6" },
-  { from: "#F5C76B", to: "#E879F9" },
-  { from: "#6366F1", to: "#22D3EE" },
-  { from: "#A78BFA", to: "#FB7185" },
-  { from: "#10B981", to: "#8B5CF6" },
-  { from: "#F59E0B", to: "#EF4444" },
+  { from: "#8B1126", to: "#B31B34" }, // deep crimson -> blood
+  { from: "#6D28D9", to: "#A78BFA" }, // deep violet -> amethyst
+  { from: "#B31B34", to: "#A78BFA" }, // blood -> amethyst
+  { from: "#7C5CCF", to: "#CDB9FA" }, // royal purple -> pale amethyst
+  { from: "#5B0E1D", to: "#8B1126" }, // near-black crimson depth
+  { from: "#A78BFA", to: "#E8DFC8" }, // amethyst -> parchment
+  { from: "#8B1126", to: "#7C5CCF" }, // crimson -> violet
+  { from: "#3F2E6E", to: "#B31B34" }, // midnight violet -> blood
 ];
 
 export function paletteFor(seed: string): ArtPalette {

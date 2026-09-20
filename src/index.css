@@ -161,6 +161,7 @@
 
   html {
     color-scheme: dark;
+    scroll-behavior: smooth;
     scrollbar-color: rgba(167, 139, 250, 0.3) transparent;
   }
 
@@ -354,12 +355,31 @@
   border: 1px solid var(--console-border);
 }
 
-/* Archive record: amethyst hairline border + crimson seal notch on hover */
+/* Archive record: amethyst hairline border + crimson seal notch on hover.
+   A glowing ember hairline along the top edge gives every card a "sealed" feel. */
 .record {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--console-border);
   border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.record::before {
+  content: "";
+  position: absolute;
+  inset-inline: 22%;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amethyst-glow), transparent);
+  opacity: 0.55;
+  transition: opacity 0.3s ease, inset-inline 0.3s ease;
+  pointer-events: none;
+}
+
+.record:hover::before {
+  opacity: 1;
+  inset-inline: 12%;
 }
 
 .record::after {
@@ -386,6 +406,12 @@
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
   border-color: rgba(167, 139, 250, 0.4);
+}
+
+/* Records respond to keyboard focus like hover */
+.hover-lift:focus-visible {
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .media-zoom {
@@ -571,6 +597,22 @@
 
 .ember-breathe {
   animation: ember-breathe 9s ease-in-out infinite;
+}
+
+/* Gentle upward drift for hero ornaments */
+@keyframes sigil-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sigil-rise {
+  animation: sigil-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ============ Scrollbars (webkit) ============ */

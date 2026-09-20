@@ -31,6 +31,8 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [resending, setResending] = useState(false);
+  const [resent, setResent] = useState(false);
 
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
@@ -71,6 +73,24 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       setError("The verification code you entered is incorrect.");
       setIsLoading(false);
       setOtp("");
+    }
+  };
+
+  const handleResend = async () => {
+    if (step === "signIn" || resending) return;
+    setResending(true);
+    setError(null);
+    try {
+      const formData = new FormData();
+      formData.set("email", step.email);
+      await signIn("email-otp", formData);
+      setResent(true);
+    } catch (e) {
+      setError(
+        e instanceof Error ? e.message : "Could not send another sigil — please try again.",
+      );
+    } finally {
+      setResending(false);
     }
   };
 
@@ -257,16 +277,20 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <div className="flex flex-col gap-2 text-center text-sm">
                   <button
                     type="button"
-                    className="rounded font-medium text-amethyst transition-colors hover:text-[#dccbfb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    onClick={() => setStep("signIn")}
-                    disabled={isLoading}
+                    className="rounded font-medium text-amethyst transition-colors hover:text-[#dccbfb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60"
+                    onClick={() => void handleResend()}
+                    disabled={isLoading || resending}
                   >
-                    Didn't receive it? Request another
+                    {resending ? "Dispatching…" : resent ? "Sigil re-dispatched ✓" : "Didn't receive it? Request another"}
                   </button>
                   <button
                     type="button"
                     className="rounded text-text-3 transition-colors hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    onClick={() => setStep("signIn")}
+                    onClick={() => {
+                      setStep("signIn");
+                      setResent(false);
+                      setOtp("");
+                    }}
                     disabled={isLoading}
                   >
                     Use a different email
