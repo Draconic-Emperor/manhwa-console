@@ -70,7 +70,7 @@ export function useFavorite() {
       try {
         await ensureAuth();
         await toggle({ item_kind: kind, item_id: id as Id<"manhwa"> | Id<"characters"> });
-        toast.success(nowSaved ? `Saved “${title}” to your Codex` : `Removed “${title}” from your Codex`);
+        toast.success(nowSaved ? `Saved “${title}” to the vault` : `Released “${title}” from the vault`);
       } catch {
         toast.error("The seal rejected the offering. Please try again.");
       }

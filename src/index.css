@@ -40,18 +40,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Codex extension palette */
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-surface: var(--surface);
-  --color-card-elev: var(--card-elev);
-  --color-violet: var(--violet);
-  --color-violet-bright: var(--violet-bright);
-  --color-magenta: var(--magenta);
-  --color-gold: var(--gold);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-danger: var(--danger);
+  /* Console extension palette */
+  --color-obsidian: var(--obsidian);
+  --color-void: var(--void);
+  --color-panel: var(--panel);
+  --color-crimson: var(--crimson);
+  --color-blood: var(--blood-red);
+  --color-gold: var(--antique-gold);
+  --color-parchment: var(--parchment);
   --color-text-2: var(--text-2);
   --color-text-3: var(--text-3);
   --font-display: var(--font-display);
@@ -59,107 +55,99 @@
 }
 
 /* ============================================================
-   Manhwa Codex — dark fantasy codex design system
+   MANHWA CONSOLE — forbidden archive design system
    Change values here; every component reads these variables.
    ============================================================ */
 :root {
   --radius: 0.75rem;
 
   /* Core palette (from the design brief) */
-  --ink: #08090d;
-  --ink-2: #0e1118;
-  --surface: #151923;
-  --card-elev: #1a1f2b;
-  --violet: #8b5cf6;
-  --violet-bright: #a78bfa;
-  --magenta: #e879f9;
-  --gold: #f5c76b;
-  --text: #f8fafc;
-  --text-2: #a8b0c0;
-  --text-3: #6f788a;
-  --success: #4ade80;
-  --warning: #fbbf24;
-  --danger: #fb7185;
+  --obsidian: #08090d;
+  --void: #111218;
+  --crimson: #8b1126;
+  --blood-red: #b31b34;
+  --antique-gold: #d4af37;
+  --parchment: #e8dfc8;
+  --panel: #14161d;
+  --console-border: rgba(212, 175, 55, 0.15);
+  --text-2: #b9b2a0;
+  --text-3: #77705f;
 
   /* shadcn token mapping (dark-first, consumed by ui primitives) */
-  --background: var(--ink);
-  --foreground: var(--text);
-  --card: var(--card-elev);
-  --card-foreground: var(--text);
-  --popover: var(--surface);
-  --popover-foreground: var(--text);
-  --primary: var(--violet);
-  --primary-foreground: #ffffff;
-  --secondary: var(--surface);
-  --secondary-foreground: var(--text);
-  --muted: var(--card-elev);
+  --background: var(--obsidian);
+  --foreground: var(--parchment);
+  --card: var(--panel);
+  --card-foreground: var(--parchment);
+  --popover: var(--void);
+  --popover-foreground: var(--parchment);
+  --primary: var(--antique-gold);
+  --primary-foreground: #1a1508;
+  --secondary: var(--panel);
+  --secondary-foreground: var(--parchment);
+  --muted: var(--void);
   --muted-foreground: var(--text-2);
-  --accent: var(--card-elev);
-  --accent-foreground: var(--text);
-  --destructive: var(--danger);
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.14);
-  --ring: var(--violet-bright);
-  --chart-1: var(--violet);
-  --chart-2: var(--magenta);
-  --chart-3: var(--gold);
-  --chart-4: var(--success);
-  --chart-5: var(--danger);
-  --sidebar: var(--ink-2);
-  --sidebar-foreground: var(--text);
-  --sidebar-primary: var(--violet);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--card-elev);
-  --sidebar-accent-foreground: var(--text);
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: var(--violet-bright);
+  --accent: var(--panel);
+  --accent-foreground: var(--parchment);
+  --destructive: #e5484d;
+  --border: var(--console-border);
+  --input: rgba(212, 175, 55, 0.22);
+  --ring: var(--antique-gold);
+  --chart-1: var(--antique-gold);
+  --chart-2: var(--blood-red);
+  --chart-3: var(--crimson);
+  --chart-4: #7d9c6a;
+  --chart-5: var(--blood-red);
+  --sidebar: var(--void);
+  --sidebar-foreground: var(--parchment);
+  --sidebar-primary: var(--antique-gold);
+  --sidebar-primary-foreground: #1a1508;
+  --sidebar-accent: var(--panel);
+  --sidebar-accent-foreground: var(--parchment);
+  --sidebar-border: var(--console-border);
+  --sidebar-ring: var(--antique-gold);
 
-  /* Codex extension tokens */
-  --card-hover: #1f2532;
-  --violet-soft: rgba(139, 92, 246, 0.14);
-  --violet-glow: rgba(139, 92, 246, 0.35);
-  --gold-soft: rgba(245, 199, 107, 0.12);
-  --gold-glow: rgba(245, 199, 107, 0.28);
-  --magenta-soft: rgba(232, 121, 249, 0.14);
-  --magenta-glow: rgba(232, 121, 249, 0.3);
-  --glow: 0 0 24px var(--violet-glow);
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.6);
+  /* Console extension tokens */
+  --gold-soft: rgba(212, 175, 55, 0.12);
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --crimson-soft: rgba(139, 17, 38, 0.35);
+  --crimson-glow: rgba(179, 27, 52, 0.45);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
   --shadow-card-hover:
-    0 2px 4px rgba(0, 0, 0, 0.4), 0 24px 48px -20px rgba(0, 0, 0, 0.7),
-    0 0 32px -8px var(--violet-glow);
-  --shadow-pop: 0 24px 64px -16px rgba(0, 0, 0, 0.8);
+    0 2px 4px rgba(0, 0, 0, 0.5), 0 24px 48px -20px rgba(0, 0, 0, 0.8),
+    0 0 28px -8px var(--crimson-glow);
+  --shadow-pop: 0 24px 64px -16px rgba(0, 0, 0, 0.85);
   --font-display: "Cinzel", "Iowan Old Style", Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* The codex is dark-first: identical tokens, kept for explicit .dark support */
+/* The console is dark-first: identical tokens, kept for explicit .dark support */
 .dark {
-  --background: var(--ink);
-  --foreground: var(--text);
-  --card: var(--card-elev);
-  --card-foreground: var(--text);
-  --popover: var(--surface);
-  --popover-foreground: var(--text);
-  --primary: var(--violet);
-  --primary-foreground: #ffffff;
-  --secondary: var(--surface);
-  --secondary-foreground: var(--text);
-  --muted: var(--card-elev);
+  --background: var(--obsidian);
+  --foreground: var(--parchment);
+  --card: var(--panel);
+  --card-foreground: var(--parchment);
+  --popover: var(--void);
+  --popover-foreground: var(--parchment);
+  --primary: var(--antique-gold);
+  --primary-foreground: #1a1508;
+  --secondary: var(--panel);
+  --secondary-foreground: var(--parchment);
+  --muted: var(--void);
   --muted-foreground: var(--text-2);
-  --accent: var(--card-elev);
-  --accent-foreground: var(--text);
-  --destructive: var(--danger);
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.14);
-  --ring: var(--violet-bright);
-  --sidebar: var(--ink-2);
-  --sidebar-foreground: var(--text);
-  --sidebar-primary: var(--violet);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--card-elev);
-  --sidebar-accent-foreground: var(--text);
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: var(--violet-bright);
+  --accent: var(--panel);
+  --accent-foreground: var(--parchment);
+  --destructive: #e5484d;
+  --border: var(--console-border);
+  --input: rgba(212, 175, 55, 0.22);
+  --ring: var(--antique-gold);
+  --sidebar: var(--void);
+  --sidebar-foreground: var(--parchment);
+  --sidebar-primary: var(--antique-gold);
+  --sidebar-primary-foreground: #1a1508;
+  --sidebar-accent: var(--panel);
+  --sidebar-accent-foreground: var(--parchment);
+  --sidebar-border: var(--console-border);
+  --sidebar-ring: var(--antique-gold);
 }
 
 @layer base {
@@ -169,7 +157,7 @@
 
   html {
     color-scheme: dark;
-    scrollbar-color: rgba(139, 92, 246, 0.35) transparent;
+    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
   }
 
   body {
@@ -185,8 +173,8 @@
   }
 
   ::selection {
-    background: var(--violet-soft);
-    color: var(--text);
+    background: rgba(139, 17, 38, 0.5);
+    color: var(--parchment);
   }
 
   /* Global focus visibility for keyboard users */
@@ -194,23 +182,29 @@
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 0.01em;
+  }
 }
 
 /* ============ Decorative layers ============ */
 
-/* Ambient page aura + faint parchment grain, fixed behind all content */
-.codex-ambient {
+/* Ambient archive aura + faint parchment grain, fixed behind all content */
+.console-ambient {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 40rem at 85% -10%, var(--violet-soft), transparent 60%),
-    radial-gradient(50rem 36rem at -10% 30%, var(--magenta-soft), transparent 60%),
+    radial-gradient(60rem 40rem at 85% -10%, var(--crimson-soft), transparent 60%),
+    radial-gradient(50rem 36rem at -10% 30%, rgba(139, 17, 38, 0.18), transparent 60%),
     radial-gradient(44rem 30rem at 50% 110%, var(--gold-soft), transparent 60%);
 }
 
-.codex-ambient::after {
+.console-ambient::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -218,75 +212,176 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Animated fog layer — pair with .console-ambient, pure CSS drift */
+.console-fog {
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(30rem 18rem at 20% 30%, rgba(139, 17, 38, 0.1), transparent 70%),
+    radial-gradient(26rem 16rem at 75% 60%, rgba(212, 175, 55, 0.05), transparent 70%),
+    radial-gradient(32rem 20rem at 50% 85%, rgba(139, 17, 38, 0.08), transparent 70%);
+  animation: fog-drift 46s ease-in-out infinite alternate;
+}
+
+@keyframes fog-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(2%, 2%, 0) scale(1.06);
+  }
+}
+
+/* Floating crimson dust particles (CSS-only, GPU-friendly) */
+.console-particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.console-particles::before,
+.console-particles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.console-particles::before {
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 20%, rgba(212, 175, 55, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 30% 70%, rgba(179, 27, 52, 0.55), transparent 60%),
+    radial-gradient(1.5px 1.5px at 47% 35%, rgba(212, 175, 55, 0.35), transparent 60%),
+    radial-gradient(1px 1px at 62% 82%, rgba(179, 27, 52, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 18%, rgba(212, 175, 55, 0.45), transparent 60%),
+    radial-gradient(1px 1px at 88% 55%, rgba(179, 27, 52, 0.5), transparent 60%);
+  animation: dust-float 36s linear infinite;
+}
+
+.console-particles::after {
+  background-image:
+    radial-gradient(1px 1px at 8% 60%, rgba(212, 175, 55, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 22% 12%, rgba(179, 27, 52, 0.45), transparent 60%),
+    radial-gradient(1px 1px at 40% 88%, rgba(212, 175, 55, 0.3), transparent 60%),
+    radial-gradient(1.5px 1.5px at 55% 8%, rgba(179, 27, 52, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 70% 42%, rgba(212, 175, 55, 0.35), transparent 60%),
+    radial-gradient(1.5px 1.5px at 92% 78%, rgba(179, 27, 52, 0.45), transparent 60%);
+  animation: dust-float 52s linear infinite reverse;
+  opacity: 0.8;
+}
+
+@keyframes dust-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-2%, -6%, 0);
+    opacity: 0.4;
+  }
+}
+
 /* Editorial headings */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: 0.01em;
 }
 
-.text-gradient-gold {
-  background: linear-gradient(100deg, var(--gold), #fae3b0 55%, var(--gold));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-gradient-arcane {
-  background: linear-gradient(100deg, var(--violet-bright), var(--magenta));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Hairline rules with a glowing rune at the start */
-.codex-rule {
-  position: relative;
-  height: 1px;
-  background: linear-gradient(90deg, var(--violet-glow), rgba(255, 255, 255, 0.08) 30%, transparent);
-}
-
-/* Section kicker: small-caps rune label */
+/* Uppercase section label with hairline */
 .kicker {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--violet-bright);
+  color: var(--antique-gold);
 }
 
 .kicker::before {
   content: "";
   width: 1.5rem;
   height: 1px;
-  background: linear-gradient(90deg, var(--violet), transparent);
+  background: linear-gradient(90deg, var(--crimson), transparent);
 }
 
-/* ============ Cards & surfaces ============ */
+/* Gold / crimson text treatments */
+.text-gradient-gold {
+  background: linear-gradient(100deg, var(--antique-gold), #f3e3a4 55%, var(--antique-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-ember {
+  background: linear-gradient(100deg, var(--antique-gold), var(--blood-red) 70%, var(--crimson));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline rules with a glowing ember at the start */
+.console-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, var(--crimson-glow), rgba(212, 175, 55, 0.18) 30%, transparent);
+}
+
+/* ============ Archive records (cards & panels) ============ */
 
 .panel {
-  background: var(--card-elev);
-  border: 1px solid var(--border);
+  background: var(--panel);
+  border: 1px solid var(--console-border);
   border-radius: var(--radius-xl);
 }
 
+/* Glass-like dark panel used for toolbars, drawers, and floating chrome */
 .panel-glass {
-  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  background: color-mix(in srgb, var(--void) 78%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border);
+  border: 1px solid var(--console-border);
+}
+
+/* Archive record: gold hairline border + crimson seal notch on hover */
+.record {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--console-border);
+  border-radius: var(--radius-xl);
+}
+
+.record::after {
+  content: "";
+  position: absolute;
+  inset-inline: 18%;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--crimson-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.record:hover::after {
+  opacity: 1;
 }
 
 .hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease,
+    background-color 0.25s ease;
 }
 
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(167, 139, 250, 0.35);
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .media-zoom {
@@ -305,7 +400,8 @@
 
 /* ============ Buttons ============ */
 
-.btn-arcane {
+/* Primary: antique gold */
+.btn-gold {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -313,46 +409,90 @@
   gap: 0.5rem;
   border-radius: var(--radius-md);
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(120deg, var(--violet), #7c3aed 55%, var(--magenta));
-  border: 1px solid rgba(167, 139, 250, 0.5);
-  box-shadow: 0 0 20px -4px var(--violet-glow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #1a1508;
+  background: linear-gradient(120deg, #e6c86a, var(--antique-gold) 55%, #b9962c);
+  border: 1px solid rgba(212, 175, 55, 0.7);
+  box-shadow: 0 0 20px -6px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-.btn-arcane:hover {
-  filter: brightness(1.12);
-  box-shadow: 0 0 30px -4px var(--violet-glow), inset 0 1px 0 rgba(255, 255, 255, 0.22);
-}
-
-.btn-arcane:active {
-  transform: translateY(1px) scale(0.99);
-}
-
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  color: #1a1206;
-  background: linear-gradient(120deg, var(--gold), #f8d98d 60%, var(--gold));
-  border: 1px solid rgba(245, 199, 107, 0.6);
-  box-shadow: 0 0 20px -6px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  transition: filter 0.2s ease, transform 0.15s ease;
 }
 
 .btn-gold:hover {
   filter: brightness(1.08);
+  box-shadow: 0 0 28px -6px var(--crimson-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .btn-gold:active {
   transform: translateY(1px) scale(0.99);
 }
 
-/* Favorite heart pulse */
-@keyframes heart-pop {
+/* Secondary: dark with gold border, crimson glow on hover */
+.btn-ember {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--parchment);
+  background: color-mix(in srgb, var(--void) 85%, transparent);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+    color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-ember:hover {
+  border-color: rgba(212, 175, 55, 0.75);
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  box-shadow: 0 0 24px -8px var(--crimson-glow);
+}
+
+.btn-ember:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Destructive ember variant */
+.btn-ember-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: #f2b8bb;
+  background: rgba(139, 17, 38, 0.12);
+  border: 1px solid rgba(179, 27, 52, 0.4);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-ember-danger:hover {
+  border-color: rgba(179, 27, 52, 0.8);
+  background: rgba(139, 17, 38, 0.22);
+  box-shadow: 0 0 24px -8px var(--crimson-glow);
+}
+
+/* ============ Forms & search ============ */
+
+/* Gold-bordered, crimson-glow focus inputs */
+.input-console {
+  background: color-mix(in srgb, var(--void) 80%, transparent);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: var(--radius-md);
+  color: var(--parchment);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-console::placeholder {
+  color: var(--text-3);
+}
+
+.input-console:focus {
+  border-color: rgba(212, 175, 55, 0.65);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), 0 0 22px -6px var(--crimson-glow);
+  outline: none;
+}
+
+/* ============ Heart pulse (favorites) ============ */
+@keyframes record-pop {
   0% {
     transform: scale(1);
   }
@@ -367,8 +507,8 @@
   }
 }
 
-.heart-pop {
-  animation: heart-pop 0.4s ease;
+.record-pop {
+  animation: record-pop 0.4s ease;
 }
 
 /* ============ Skeleton shimmer ============ */
@@ -376,7 +516,7 @@
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: var(--card-elev);
+  background: var(--panel);
   border-radius: var(--radius-md);
 }
 
@@ -385,7 +525,7 @@
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06) 45%, rgba(167, 139, 250, 0.08) 55%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.06) 45%, rgba(139, 17, 38, 0.1) 55%, transparent);
   animation: shimmer 1.6s infinite;
 }
 
@@ -395,7 +535,7 @@
   }
 }
 
-/* ============ Page transition & staggered reveal ============ */
+/* ============ Page transition ============ */
 
 @keyframes rise-in {
   from {
@@ -412,6 +552,23 @@
   animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Slow hero pulse for archive glow */
+@keyframes ember-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+.ember-breathe {
+  animation: ember-breathe 9s ease-in-out infinite;
+}
+
 /* ============ Scrollbars (webkit) ============ */
 
 ::-webkit-scrollbar {
@@ -424,13 +581,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.25);
+  background: rgba(212, 175, 55, 0.22);
   border-radius: 999px;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--obsidian);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.45);
+  background: rgba(212, 175, 55, 0.4);
 }
 
 /* ============ Reduced motion ============ */

@@ -165,7 +165,7 @@ createRoot(document.getElementById("root")!).render(
                 }
               />
               <Route
-                path="/insights"
+                path="/chronicles"
                 element={
                   <RequireAuth>
                     <Dashboard>

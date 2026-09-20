@@ -48,23 +48,26 @@ export default function CharactersView() {
     <div className="space-y-8">
       <header className="rise-in">
         <p className="kicker">Power registry</p>
-        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Character Database</h1>
+        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-parchment sm:text-4xl">
+          Entity Registry
+        </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-2 sm:text-base">
-          Every cataloged hero, villain, and supporting soul — ranked, bound to their series, and searchable.
+          Every cataloged hero, villain, and supporting soul — ranked, bound to their series, and
+          searchable across the archive.
         </p>
       </header>
 
       {/* Toolbar */}
-      <div className="panel-glass sticky top-16 z-20 rounded-xl border p-4 lg:top-0">
+      <div className="panel-glass sticky top-16 z-20 rounded-xl p-4 lg:top-0">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-3" aria-hidden="true" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search name or role…"
-              className="pl-9"
-              aria-label="Search characters"
+              placeholder="Query entities by name or designation…"
+              className="input-console pl-9"
+              aria-label="Query entity records"
             />
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:flex">
@@ -74,7 +77,7 @@ export default function CharactersView() {
                 value={seriesParam}
                 onValueChange={(v) => setSearchParams(v === "all" ? {} : { series: v })}
               >
-                <SelectTrigger id="cf-series" className="w-full lg:w-52" aria-label="Filter by series">
+                <SelectTrigger id="cf-series" className="input-console w-full lg:w-52" aria-label="Filter by series">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
@@ -86,13 +89,13 @@ export default function CharactersView() {
               </Select>
             </div>
             <div>
-              <Label htmlFor="cf-sort" className="sr-only">Sort</Label>
+              <Label htmlFor="cf-sort" className="sr-only">Order</Label>
               <Select value={sort} onValueChange={(v) => setSort(v as typeof sort)}>
-                <SelectTrigger id="cf-sort" className="w-full lg:w-44" aria-label="Sort characters">
+                <SelectTrigger id="cf-sort" className="input-console w-full lg:w-44" aria-label="Order entities">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
-                  <SelectItem value="rank">Rank (best first)</SelectItem>
+                  <SelectItem value="rank">Rank (highest first)</SelectItem>
                   <SelectItem value="name">Name A–Z</SelectItem>
                   <SelectItem value="series">By series</SelectItem>
                 </SelectContent>
@@ -100,8 +103,8 @@ export default function CharactersView() {
             </div>
           </div>
         </div>
-        <p className="mt-3 text-xs text-muted-foreground" aria-live="polite">
-          {loading ? "Consulting the registry…" : `${filtered.length} of ${characters.length} characters`}
+        <p className="mt-3 text-xs text-text-3" aria-live="polite">
+          {loading ? "Consulting the registry…" : `${filtered.length} of ${characters.length} entities revealed`}
         </p>
       </div>
 
@@ -111,13 +114,13 @@ export default function CharactersView() {
         <EmptyState
           icon={<Users className="size-6" />}
           title="The registry is empty"
-          hint="No characters have been cataloged yet."
+          hint="No entities have been cataloged yet."
         />
       ) : filtered.length === 0 ? (
         <EmptyState
           icon={<UserX className="size-6" />}
-          title="No characters found"
-          hint="Try a different name, role, or series filter."
+          title="No entities found"
+          hint="Try another name, designation, or series filter."
           action={
             <Button
               variant="outline"

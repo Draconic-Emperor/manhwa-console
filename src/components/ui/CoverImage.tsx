@@ -38,8 +38,8 @@ export function CoverImage({
 
   return (
     <div
-      className={cn("relative h-full w-full overflow-hidden bg-card-elev", className)}
-      style={{ backgroundColor: "#1a1f2b" }}
+      className={cn("relative h-full w-full overflow-hidden bg-panel", className)}
+      style={{ backgroundColor: "#14161d" }}
     >
       {!loaded && <div className="skeleton absolute inset-0" aria-hidden="true" />}
       <img

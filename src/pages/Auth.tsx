@@ -5,9 +5,9 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { CodexSigil } from "@/components/layout/BrandMark";
+import { ConsoleSeal } from "@/components/layout/BrandMark";
 import { useAuth } from "@/hooks/use-auth";
-import { ArrowRight, BookOpen, Loader2, Mail, Quote, Trophy, UserX } from "lucide-react";
+import { ArrowRight, BookOpen, KeyRound, Loader2, Mail, Quote, Trophy, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router";
 
@@ -91,43 +91,45 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
 
   return (
     <div className="relative flex min-h-dvh flex-col">
-      <div className="codex-ambient" aria-hidden="true" />
+      <div className="console-ambient" aria-hidden="true" />
+      <div className="console-fog" aria-hidden="true" />
+      <div className="console-particles" aria-hidden="true" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-1 items-center justify-center px-4 py-10 sm:px-6 lg:px-10">
-        <div className="grid w-full gap-0 overflow-hidden rounded-2xl border border-border bg-ink-2/70 shadow-[var(--shadow-pop)] backdrop-blur lg:grid-cols-2">
-          {/* Brand panel */}
+        <div className="grid w-full gap-0 overflow-hidden rounded-2xl border border-gold/20 bg-void/70 shadow-[var(--shadow-pop)] backdrop-blur lg:grid-cols-2">
+          {/* Archive panel */}
           <aside className="relative hidden flex-col justify-between gap-8 border-r border-border p-10 lg:flex" aria-hidden="true">
             <div
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(36rem 28rem at 20% 0%, var(--violet-soft), transparent 60%), radial-gradient(30rem 24rem at 90% 100%, var(--magenta-soft), transparent 60%)",
+                  "radial-gradient(36rem 28rem at 20% 0%, var(--crimson-soft), transparent 60%), radial-gradient(30rem 24rem at 90% 100%, var(--gold-soft), transparent 60%)",
               }}
             />
             <div className="relative">
-              <span className="relative flex size-12 items-center justify-center rounded-2xl border border-violet-400/30 bg-gradient-to-br from-violet-400/15 to-fuchsia-400/5 shadow-[0_0_24px_-6px_var(--violet-glow)]">
-                <CodexSigil className="size-7" />
+              <span className="relative flex size-12 items-center justify-center rounded-2xl border border-gold/35 bg-obsidian shadow-[0_0_24px_-6px_var(--crimson-glow)]">
+                <ConsoleSeal className="size-7" />
               </span>
-              <p className="font-display mt-6 text-3xl font-bold leading-tight text-foreground">
-                The archive opens <span className="text-gradient-arcane">for those who write</span>
+              <p className="font-display mt-6 text-3xl font-bold leading-tight text-parchment">
+                Access the Archive. <span className="text-gradient-gold">Uncover Legends.</span>
               </p>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-2">
-                Inscribe series, catalog heroes, settle rankings, and seal theories — the codex
-                keeps what its readers write.
+                Inscribe records, catalog entities, settle rankings, and seal chronicles — the
+                console keeps what its researchers write.
               </p>
             </div>
             <ul className="relative space-y-4 text-sm text-text-2">
               <li className="flex items-start gap-3">
-                <BookOpen className="mt-0.5 size-4 shrink-0 text-violet-bright" />
-                A living archive of series and their full casts
+                <BookOpen className="mt-0.5 size-4 shrink-0 text-gold" />
+                A forbidden archive of series and their full casts
               </li>
               <li className="flex items-start gap-3">
                 <Trophy className="mt-0.5 size-4 shrink-0 text-gold" />
-                Community-settled power rankings in four tiers
+                Researcher-settled rankings in four tiers
               </li>
               <li className="flex items-start gap-3">
-                <Quote className="mt-0.5 size-4 shrink-0 text-magenta" />
-                Insights and theories preserved on every character's page
+                <Quote className="mt-0.5 size-4 shrink-0 text-crimson" />
+                Chronicles preserved on every entity's record
               </li>
             </ul>
           </aside>
@@ -135,34 +137,34 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
           {/* Form panel */}
           <div className="relative flex flex-col justify-center gap-6 p-6 sm:p-10">
             <div className="flex flex-col items-start gap-4 lg:items-center">
-              <span className="flex size-10 items-center justify-center rounded-xl border border-violet-400/30 bg-violet-400/10 lg:hidden">
-                <CodexSigil className="size-5" />
+              <span className="flex size-10 items-center justify-center rounded-xl border border-gold/30 bg-void lg:hidden">
+                <ConsoleSeal className="size-5" />
               </span>
-              <h1 className="font-display text-2xl font-bold tracking-tight text-foreground">
-                {step === "signIn" ? "Enter the Codex" : "Check your inbox"}
+              <h1 className="font-display text-2xl font-bold tracking-tight text-parchment">
+                {step === "signIn" ? "Enter the Archive" : "Present your sigil"}
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-text-2">
                 {step === "signIn"
-                  ? "Sign in with email, or continue as a wandering guest."
-                  : `We've sent a six-letter sigil to ${step.email}.`}
+                  ? "Sign in with email, or continue as a wandering researcher."
+                  : `A six-letter sigil was dispatched to ${step.email}.`}
               </p>
             </div>
 
             {step === "signIn" ? (
               <div className="space-y-5">
-                <form onSubmit={handleEmailSubmit} className="space-y-4" noValidate={false}>
+                <form onSubmit={handleEmailSubmit} className="space-y-4">
                   <div className="space-y-1.5">
-                    <label htmlFor="auth-email" className="text-sm font-medium text-foreground">
-                      Email
+                    <label htmlFor="auth-email" className="text-sm font-medium text-parchment">
+                      Researcher email
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+                      <Mail className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-3" aria-hidden="true" />
                       <Input
                         id="auth-email"
                         name="email"
                         placeholder="name@example.com"
                         type="email"
-                        className="pl-9"
+                        className="input-console pl-9"
                         autoComplete="email"
                         disabled={isLoading}
                         required
@@ -171,16 +173,16 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                   </div>
 
                   {error && (
-                    <p role="alert" className="text-sm text-rose-300">
+                    <p role="alert" className="text-sm text-[#f2b8bb]">
                       {error}
                     </p>
                   )}
 
-                  <Button type="submit" disabled={isLoading} className="btn-arcane w-full py-2.5">
+                  <Button type="submit" disabled={isLoading} className="btn-gold w-full py-2.5">
                     {isLoading ? (
                       <Loader2 className="size-4 animate-spin" aria-hidden="true" />
                     ) : (
-                      <ArrowRight className="size-4" aria-hidden="true" />
+                      <KeyRound className="size-4" aria-hidden="true" />
                     )}
                     Send sign-in sigil
                   </Button>
@@ -191,7 +193,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     <span className="w-full border-t border-border" />
                   </div>
                   <div className="relative flex justify-center">
-                    <span className="bg-ink-2 px-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                    <span className="bg-void px-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-text-3">
                       or
                     </span>
                   </div>
@@ -200,7 +202,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full border-white/15 bg-white/5 py-2.5 hover:border-violet-400/40 hover:text-violet-bright"
+                  className="btn-ember w-full py-2.5"
                   onClick={handleGuestLogin}
                   disabled={isLoading}
                 >
@@ -235,19 +237,19 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 </div>
 
                 {error && (
-                  <p role="alert" className="text-center text-sm text-rose-300">
+                  <p role="alert" className="text-center text-sm text-[#f2b8bb]">
                     {error}
                   </p>
                 )}
 
-                <Button type="submit" className="btn-arcane w-full py-2.5" disabled={isLoading || otp.length !== 6}>
+                <Button type="submit" className="btn-gold w-full py-2.5" disabled={isLoading || otp.length !== 6}>
                   {isLoading ? (
                     <>
                       <Loader2 className="size-4 animate-spin" aria-hidden="true" /> Verifying…
                     </>
                   ) : (
                     <>
-                      Verify sigil <ArrowRight className="size-4" aria-hidden="true" />
+                      Present sigil <ArrowRight className="size-4" aria-hidden="true" />
                     </>
                   )}
                 </Button>
@@ -255,15 +257,15 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <div className="flex flex-col gap-2 text-center text-sm">
                   <button
                     type="button"
-                    className="font-medium text-violet-bright transition-colors hover:text-magenta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                    className="rounded font-medium text-gold transition-colors hover:text-[#f0dd9a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setStep("signIn")}
                     disabled={isLoading}
                   >
-                    Didn't receive it? Try again
+                    Didn't receive it? Request another
                   </button>
                   <button
                     type="button"
-                    className="text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                    className="rounded text-text-3 transition-colors hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setStep("signIn")}
                     disabled={isLoading}
                   >
@@ -273,9 +275,9 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
               </form>
             )}
 
-            <p className="text-center text-xs text-muted-foreground">
-              <Link to="/" className="underline-offset-4 hover:text-foreground hover:underline">
-                ← Back to the front page
+            <p className="text-center text-xs text-text-3">
+              <Link to="/" className="underline-offset-4 hover:text-parchment hover:underline">
+                ← Back to the archive gate
               </Link>
             </p>
           </div>

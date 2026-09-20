@@ -125,7 +125,7 @@ export function ManhwaFormDialog({
                 placeholder="e.g. Shadow Monarch's Descent"
                 aria-invalid={Boolean(errors.title)}
               />
-              {errors.title && <p className="text-xs text-rose-300">{errors.title}</p>}
+              {errors.title && <p className="text-xs text-destructive">{errors.title}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="mh-author">Author *</Label>
@@ -136,7 +136,7 @@ export function ManhwaFormDialog({
                 placeholder="e.g. Sung-Hyun Park"
                 aria-invalid={Boolean(errors.author)}
               />
-              {errors.author && <p className="text-xs text-rose-300">{errors.author}</p>}
+              {errors.author && <p className="text-xs text-destructive">{errors.author}</p>}
             </div>
           </div>
 
@@ -164,7 +164,7 @@ export function ManhwaFormDialog({
                 placeholder="1–999"
                 aria-invalid={Boolean(errors.rank)}
               />
-              {errors.rank && <p className="text-xs text-rose-300">{errors.rank}</p>}
+              {errors.rank && <p className="text-xs text-destructive">{errors.rank}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="mh-genre">Genre</Label>
@@ -187,7 +187,7 @@ export function ManhwaFormDialog({
               aria-invalid={Boolean(errors.cover)}
             />
             {errors.cover ? (
-              <p className="text-xs text-rose-300">{errors.cover}</p>
+              <p className="text-xs text-destructive">{errors.cover}</p>
             ) : (
               <p className="text-xs text-muted-foreground">Leave empty and the codex conjures its own art.</p>
             )}
@@ -203,14 +203,14 @@ export function ManhwaFormDialog({
               placeholder="What world does this series open?"
               aria-invalid={Boolean(errors.description)}
             />
-            {errors.description && <p className="text-xs text-rose-300">{errors.description}</p>}
+            {errors.description && <p className="text-xs text-destructive">{errors.description}</p>}
           </div>
 
           <DialogFooter className="gap-2 sm:gap-0">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)} disabled={saving}>
               Cancel
             </Button>
-            <Button type="submit" disabled={saving} className="btn-arcane">
+            <Button type="submit" disabled={saving} className="btn-gold">
               {saving && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
               {editing ? "Save changes" : "Inscribe series"}
             </Button>

@@ -15,12 +15,12 @@ export function CharacterCard({
   return (
     <LinkCard
       to={`/character/${character._id}`}
-      label={`View character: ${character.name}`}
+      label={`Open entity record: ${character.name}`}
       className="group flex flex-col"
     >
       <div className="media-zoom relative aspect-[3/4] w-full">
         <CoverImage src={character.image_url} seed={character._id} ratio="portrait" alt="" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/10 to-transparent" />
         <div className="absolute left-2 top-2">
           <RankBadge rank={character.rank} />
         </div>
@@ -34,10 +34,10 @@ export function CharacterCard({
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1 p-3">
-        <h3 className="font-display truncate text-sm font-semibold text-foreground transition-colors group-hover:text-violet-bright">
+        <h3 className="font-display truncate text-sm font-semibold text-parchment transition-colors group-hover:text-gold">
           {character.name}
         </h3>
-        <p className="truncate text-xs text-muted-foreground">
+        <p className="truncate text-xs text-text-3">
           {character.role}
           {manhwa ? ` · ${manhwa.title}` : ""}
         </p>

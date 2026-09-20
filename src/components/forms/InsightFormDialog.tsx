@@ -177,20 +177,20 @@ export function InsightFormDialog({
             />
           </div>
 
-          {error && <p className="text-xs text-rose-300">{error}</p>}
+          {error && <p className="text-xs text-destructive">{error}</p>}
 
           <DialogFooter className="gap-2 sm:gap-0">
             {isEdit && editing && (
               <Button
                 type="button"
                 variant="ghost"
-                className="text-rose-300 hover:text-rose-200"
+                className="text-destructive hover:text-destructive/80"
                 disabled={saving}
                 onClick={async () => {
                   try {
                     await ensureAuth();
                     await remove({ id: editing._id });
-                    toast.success("Insight removed from the codex.");
+                    toast.success("Insight removed from the chronicle.");
                     onOpenChange(false);
                   } catch {
                     toast.error("Failed to remove the insight.");
@@ -203,7 +203,7 @@ export function InsightFormDialog({
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)} disabled={saving}>
               Cancel
             </Button>
-            <Button type="submit" disabled={saving} className="btn-arcane">
+            <Button type="submit" disabled={saving} className="btn-gold">
               {saving && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
               {isEdit ? "Save changes" : "Seal insight"}
             </Button>

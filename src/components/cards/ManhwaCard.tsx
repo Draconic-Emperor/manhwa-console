@@ -1,22 +1,21 @@
 import { BookOpen, Star, Users } from "lucide-react";
 import type { Manhwa } from "@/lib/codex";
 import { CoverImage } from "@/components/ui/CoverImage";
-import { LinkCard } from "@/components/ui/codex";
-import { RankBadge, StatusPill } from "@/components/ui/codex";
+import { LinkCard, RankBadge, StatusPill } from "@/components/ui/codex";
 import { FavoriteButton } from "./FavoriteButton";
 
 export function ManhwaCard({ manhwa, charCount }: { manhwa: Manhwa; charCount: number }) {
   return (
     <LinkCard
       to={`/manhwa/${manhwa._id}`}
-      label={`View series: ${manhwa.title}`}
+      label={`Open archive entry: ${manhwa.title}`}
       className="group flex flex-col"
     >
       <div className="media-zoom relative aspect-[2/3] w-full">
         <CoverImage src={manhwa.cover_image} seed={manhwa._id} ratio="portrait" alt="" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/15 to-transparent"
         />
         {/* Rank + status badges */}
         <div className="absolute left-2.5 top-2.5 flex flex-col gap-1.5">
@@ -30,12 +29,12 @@ export function ManhwaCard({ manhwa, charCount }: { manhwa: Manhwa; charCount: n
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1.5 p-3.5">
-        <h3 className="font-display line-clamp-2 text-[15px] font-semibold leading-snug text-foreground transition-colors group-hover:text-violet-bright">
+        <h3 className="font-display line-clamp-2 text-[15px] font-semibold leading-snug text-parchment transition-colors group-hover:text-gold">
           {manhwa.title}
         </h3>
-        <p className="truncate text-xs text-muted-foreground">{manhwa.author}</p>
-        <div className="mt-auto flex items-center gap-3 pt-2 text-[11px] text-muted-foreground">
-          <span className="inline-flex items-center gap-1" title={`${charCount} cataloged characters`}>
+        <p className="truncate text-xs text-text-3">{manhwa.author}</p>
+        <div className="mt-auto flex items-center gap-3 pt-2 text-[11px] text-text-3">
+          <span className="inline-flex items-center gap-1" title={`${charCount} cataloged entities`}>
             <Users className="size-3.5" aria-hidden="true" />
             {charCount}
           </span>
@@ -45,9 +44,8 @@ export function ManhwaCard({ manhwa, charCount }: { manhwa: Manhwa; charCount: n
               {manhwa.genre}
             </span>
           )}
-          <span className="ml-auto inline-flex items-center gap-1 tabular-nums" title="Series rank">
-            <Star className="size-3.5 text-amber-300" aria-hidden="true" />
-            #{manhwa.rank}
+          <span className="ml-auto inline-flex items-center gap-1 tabular-nums" title="Archive rank">
+            <Star className="size-3.5 text-gold" aria-hidden="true" />#{manhwa.rank}
           </span>
         </div>
       </div>

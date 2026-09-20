@@ -11,16 +11,16 @@ export function Badge({
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "neutral" | "violet" | "gold" | "magenta" | "success" | "warning" | "danger";
+  tone?: "neutral" | "gold" | "crimson" | "ember" | "moss" | "warning" | "danger";
 }) {
   const tones: Record<string, string> = {
     neutral: "border-white/10 bg-white/5 text-text-2",
-    violet: "border-violet-400/30 bg-violet-400/12 text-violet-bright",
-    gold: "border-amber-400/30 bg-amber-400/12 text-amber-300",
-    magenta: "border-fuchsia-400/30 bg-fuchsia-400/12 text-fuchsia-300",
-    success: "border-emerald-400/30 bg-emerald-400/12 text-emerald-300",
-    warning: "border-amber-400/30 bg-amber-400/12 text-amber-300",
-    danger: "border-rose-400/30 bg-rose-400/12 text-rose-300",
+    gold: "border-gold/35 bg-gold/12 text-gold",
+    crimson: "border-crimson/50 bg-crimson/15 text-[#e59aa3]",
+    ember: "border-crimson/60 bg-crimson/20 text-[#f2b8bb]",
+    moss: "border-[#7d9c6a]/40 bg-[#7d9c6a]/12 text-[#a9c494]",
+    warning: "border-gold/45 bg-gold/15 text-[#e8c96a]",
+    danger: "border-[#e5484d]/40 bg-[#e5484d]/12 text-[#f2b8bb]",
   };
   return (
     <span
@@ -40,12 +40,12 @@ export function Badge({
 export function RankBadge({ rank, className }: { rank: number; className?: string }) {
   const tier =
     rank <= 10
-      ? { label: "Mythic", cls: "border-amber-400/50 bg-amber-400/15 text-amber-200", ring: "shadow-[0_0_14px_-2px_var(--gold-glow)]" }
+      ? { label: "Mythic", cls: "border-gold/55 bg-gold/15 text-[#f0dd9a]", ring: "shadow-[0_0_14px_-2px_var(--gold-glow)]" }
       : rank <= 25
-        ? { label: "Legendary", cls: "border-fuchsia-400/50 bg-fuchsia-400/15 text-fuchsia-200", ring: "" }
+        ? { label: "Legendary", cls: "border-crimson/60 bg-crimson/18 text-[#eda3ac]", ring: "shadow-[0_0_14px_-4px_var(--crimson-glow)]" }
         : rank <= 50
-          ? { label: "Elite", cls: "border-violet-400/50 bg-violet-400/15 text-violet-200", ring: "" }
-          : { label: "Rising", cls: "border-sky-400/50 bg-sky-400/15 text-sky-200", ring: "" };
+          ? { label: "Elite", cls: "border-gold/35 bg-gold/10 text-gold", ring: "" }
+          : { label: "Rising", cls: "border-white/15 bg-white/5 text-text-2", ring: "" };
 
   return (
     <span
@@ -67,13 +67,13 @@ export function RankBadge({ rank, className }: { rank: number; className?: strin
   );
 }
 
-/* ---------- Status pill for series ---------- */
+/* ---------- Record status pill for series ---------- */
 
 export function StatusPill({ status }: { status: "ongoing" | "completed" | "hiatus" }) {
   const map = {
-    ongoing: { label: "Ongoing", tone: "violet" as const },
-    completed: { label: "Completed", tone: "success" as const },
-    hiatus: { label: "Hiatus", tone: "warning" as const },
+    ongoing: { label: "Active Record", tone: "crimson" as const },
+    completed: { label: "Sealed Record", tone: "moss" as const },
+    hiatus: { label: "Dormant Record", tone: "warning" as const },
   };
   const s = map[status] ?? map.ongoing;
   return <Badge tone={s.tone}>{s.label}</Badge>;
@@ -96,7 +96,7 @@ export function SectionHeader({
     <div className={cn("mb-5 flex flex-wrap items-end justify-between gap-3", className)}>
       <div>
         {kicker && <p className="kicker">{kicker}</p>}
-        <h2 className="font-display mt-1.5 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+        <h2 className="font-display mt-1.5 text-xl font-semibold tracking-tight text-parchment sm:text-2xl">
           {title}
         </h2>
       </div>
@@ -129,12 +129,12 @@ export function EmptyState({
     >
       <div
         aria-hidden="true"
-        className="flex size-14 items-center justify-center rounded-2xl border border-violet-400/25 bg-violet-400/10 text-violet-bright shadow-[0_0_30px_-8px_var(--violet-glow)]"
+        className="flex size-14 items-center justify-center rounded-2xl border border-gold/30 bg-crimson/10 text-gold shadow-[0_0_30px_-8px_var(--crimson-glow)]"
       >
         {icon}
       </div>
-      <p className="font-display text-lg font-semibold">{title}</p>
-      {hint && <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">{hint}</p>}
+      <p className="font-display text-lg font-semibold text-parchment">{title}</p>
+      {hint && <p className="max-w-sm text-sm leading-relaxed text-text-2">{hint}</p>}
       {action && <div className="mt-2">{action}</div>}
     </div>
   );
@@ -142,7 +142,13 @@ export function EmptyState({
 
 /* ---------- Skeleton grids ---------- */
 
-export function SkeletonGrid({ count = 8, kind = "manhwa" }: { count?: number; kind?: "manhwa" | "character" | "insight" }) {
+export function SkeletonGrid({
+  count = 8,
+  kind = "manhwa",
+}: {
+  count?: number;
+  kind?: "manhwa" | "character" | "insight";
+}) {
   if (kind === "character") {
     return (
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -205,7 +211,7 @@ export function LinkCard({
       to={to}
       aria-label={label}
       className={cn(
-        "group panel hover-lift focus-visible:ring-ring relative block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "group record hover-lift focus-visible:ring-ring relative block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
     >

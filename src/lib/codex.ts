@@ -1,6 +1,6 @@
 import type { Id } from "@/convex/_generated/dataModel";
 
-/* ---------- Types mirroring the original Manhwa Codex data ---------- */
+/* ---------- Types mirroring the Manhwa Console data ---------- */
 
 export type ManhwaStatus = "ongoing" | "completed" | "hiatus";
 
@@ -48,15 +48,15 @@ export type Favorite = {
 /* ---------- Display helpers ---------- */
 
 export const STATUS_LABEL: Record<ManhwaStatus, string> = {
-  ongoing: "Ongoing",
-  completed: "Completed",
-  hiatus: "Hiatus",
+  ongoing: "Active Record",
+  completed: "Sealed Record",
+  hiatus: "Dormant Record",
 };
 
 export const STATUS_CLASS: Record<ManhwaStatus, string> = {
-  ongoing: "bg-violet-soft text-violet-bright border-violet/30",
-  completed: "bg-emerald-500/12 text-emerald-300 border-emerald-400/30",
-  hiatus: "bg-amber-500/12 text-amber-300 border-amber-400/30",
+  ongoing: "bg-crimson/15 text-[#e59aa3] border-crimson/40",
+  completed: "bg-[#7d9c6a]/12 text-[#a9c494] border-[#7d9c6a]/35",
+  hiatus: "bg-gold/12 text-[#e8c96a] border-gold/35",
 };
 
 export const INSIGHT_LABEL: Record<InsightType, string> = {
@@ -67,43 +67,49 @@ export const INSIGHT_LABEL: Record<InsightType, string> = {
 };
 
 export const INSIGHT_CLASS: Record<InsightType, string> = {
-  theory: "bg-fuchsia-500/12 text-fuchsia-300 border-fuchsia-400/30",
-  review: "bg-violet-soft text-violet-bright border-violet/30",
-  lore: "bg-cyan-500/12 text-cyan-300 border-cyan-400/30",
-  analysis: "bg-amber-500/12 text-amber-300 border-amber-400/30",
+  theory: "bg-crimson/15 text-[#eda3ac] border-crimson/45",
+  review: "bg-gold/12 text-gold border-gold/35",
+  lore: "bg-[#7d9c6a]/12 text-[#a9c494] border-[#7d9c6a]/35",
+  analysis: "bg-white/6 text-text-2 border-white/12",
 };
 
 /** Rank tiers: named power bands so colors never carry meaning alone. */
-export function rankTier(rank: number): { label: string; text: string; border: string; bg: string; glow: string } {
+export function rankTier(rank: number): {
+  label: string;
+  text: string;
+  border: string;
+  bg: string;
+  glow: string;
+} {
   if (rank <= 10)
     return {
       label: "Mythic",
-      text: "text-amber-300",
-      border: "border-amber-400/40",
-      bg: "bg-amber-400/12",
+      text: "text-[#f0dd9a]",
+      border: "border-gold/45",
+      bg: "bg-gold/12",
       glow: "shadow-[0_0_18px_-4px_var(--gold-glow)]",
     };
   if (rank <= 25)
     return {
       label: "Legendary",
-      text: "text-fuchsia-300",
-      border: "border-fuchsia-400/40",
-      bg: "bg-fuchsia-400/12",
-      glow: "shadow-[0_0_18px_-4px_var(--magenta-glow)]",
+      text: "text-[#eda3ac]",
+      border: "border-crimson/50",
+      bg: "bg-crimson/15",
+      glow: "shadow-[0_0_18px_-4px_var(--crimson-glow)]",
     };
   if (rank <= 50)
     return {
       label: "Elite",
-      text: "text-violet-bright",
-      border: "border-violet-400/40",
-      bg: "bg-violet-400/12",
+      text: "text-gold",
+      border: "border-gold/35",
+      bg: "bg-gold/10",
       glow: "",
     };
   return {
     label: "Rising",
-    text: "text-sky-300",
-    border: "border-sky-400/40",
-    bg: "bg-sky-400/12",
+    text: "text-text-2",
+    border: "border-white/15",
+    bg: "bg-white/5",
     glow: "",
   };
 }
@@ -138,12 +144,11 @@ export function fullDate(ts: number): string {
 /** Deterministic tailwind gradient class pair for fallback panels. */
 export function auraFor(seed: string): string {
   const options = [
-    "from-violet-500/25 via-fuchsia-500/10 to-transparent",
-    "from-fuchsia-500/25 via-violet-500/10 to-transparent",
-    "from-amber-400/20 via-fuchsia-500/10 to-transparent",
-    "from-sky-500/20 via-violet-500/10 to-transparent",
-    "from-emerald-500/20 via-violet-500/10 to-transparent",
-    "from-rose-500/20 via-amber-400/10 to-transparent",
+    "from-crimson/30 via-gold/8 to-transparent",
+    "from-gold/20 via-crimson/10 to-transparent",
+    "from-[#7d9c6a]/20 via-crimson/10 to-transparent",
+    "from-crimson/25 via-gold/6 to-transparent",
+    "from-gold/15 via-crimson/12 to-transparent",
   ];
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;

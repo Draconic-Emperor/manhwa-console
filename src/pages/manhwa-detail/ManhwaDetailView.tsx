@@ -13,7 +13,6 @@ import {
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
-import type { Id } from "@/convex/_generated/dataModel";
 import type { Manhwa } from "@/lib/codex";
 import { STATUS_LABEL, fullDate } from "@/lib/codex";
 import { CoverImage } from "@/components/ui/CoverImage";
@@ -43,10 +42,7 @@ export default function ManhwaDetailView() {
   const series: Manhwa | undefined = useMemo(() => manhwa.find((m) => m._id === id), [manhwa, id]);
 
   const seriesCharacters = useMemo(
-    () =>
-      characters
-        .filter((c) => c.manhwa_id === id)
-        .sort((a, b) => a.rank - b.rank),
+    () => characters.filter((c) => c.manhwa_id === id).sort((a, b) => a.rank - b.rank),
     [characters, id],
   );
 
@@ -54,6 +50,11 @@ export default function ManhwaDetailView() {
     const charIds = new Set(seriesCharacters.map((c) => c._id));
     return insights.filter((i) => charIds.has(i.character_id)).slice(0, 4);
   }, [insights, seriesCharacters]);
+
+  const insightTotal = useMemo(
+    () => insights.filter((i) => seriesCharacters.some((c) => c._id === i.character_id)).length,
+    [insights, seriesCharacters],
+  );
 
   if (loading) {
     return (
@@ -69,10 +70,10 @@ export default function ManhwaDetailView() {
     return (
       <EmptyState
         icon={<BookOpen className="size-6" />}
-        title="Entry not found"
-        hint="This series has not been inscribed in the codex — it may have been removed."
+        title="Record not found"
+        hint="This entry has not been inscribed in the archive — it may have been struck from the records."
         action={
-          <Link to="/series" className="btn-arcane px-5 py-2.5 text-sm">
+          <Link to="/series" className="btn-gold px-5 py-2.5 text-sm">
             <ArrowLeft className="size-4" aria-hidden="true" /> Back to the archive
           </Link>
         }
@@ -85,10 +86,10 @@ export default function ManhwaDetailView() {
     try {
       await ensureAuth();
       await deleteManhwa({ id: series._id });
-      toast.success(`“${series.title}” was struck from the codex.`);
+      toast.success(`“${series.title}” was struck from the archive.`);
       navigate("/series");
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to remove the series.");
+      toast.error(err instanceof Error ? err.message : "Failed to remove the record.");
     } finally {
       setDeleting(false);
       setConfirmOpen(false);
@@ -98,117 +99,128 @@ export default function ManhwaDetailView() {
   return (
     <div className="space-y-10">
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
+      <nav aria-label="Breadcrumb" className="text-xs text-text-3">
         <ol className="flex flex-wrap items-center gap-1.5">
-          <li>
-            <Link to="/dashboard" className="hover:text-foreground">Home</Link>
-          </li>
+          <li><Link to="/dashboard" className="hover:text-parchment">Archive</Link></li>
           <li aria-hidden="true">/</li>
-          <li>
-            <Link to="/series" className="hover:text-foreground">Series</Link>
-          </li>
+          <li><Link to="/series" className="hover:text-parchment">Records</Link></li>
           <li aria-hidden="true">/</li>
-          <li aria-current="page" className="text-foreground">{series.title}</li>
+          <li aria-current="page" className="text-parchment">{series.title}</li>
         </ol>
       </nav>
 
-      {/* Hero */}
-      <section className="panel relative overflow-hidden rise-in">
+      {/* Archive entry hero */}
+      <section className="record relative overflow-hidden rise-in">
         <div className="absolute inset-0" aria-hidden="true">
           <CoverImage src={series.cover_image} seed={series._id} ratio="wide" alt="" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/88 to-background/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/88 to-obsidian/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/40" />
         </div>
 
         <div className="relative z-10 grid gap-8 p-6 sm:p-10 md:grid-cols-[200px_1fr]">
           <div className="hidden md:block">
-            <div className="media-zoom overflow-hidden rounded-xl border border-white/15 shadow-[var(--shadow-card)]">
+            <div className="media-zoom overflow-hidden rounded-xl border border-gold/25 shadow-[var(--shadow-card)]">
               <div className="aspect-[2/3]">
                 <CoverImage
                   src={series.cover_image}
                   seed={series._id}
                   ratio="portrait"
-                  alt={`Cover art for ${series.title}`}
+                  alt={`Sealed cover art for ${series.title}`}
                 />
               </div>
             </div>
           </div>
 
           <div className="flex flex-col justify-end gap-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <StatusPill status={series.status} />
-              {series.genre && <Badge tone="violet">{series.genre}</Badge>}
-              <Badge tone="gold">Rank #{series.rank}</Badge>
-            </div>
+            <p className="kicker">
+              Archive Entry #{series._id.slice(-6).toUpperCase()}
+            </p>
             <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h1 className="font-display text-3xl font-bold tracking-tight text-parchment sm:text-4xl lg:text-5xl">
                 {series.title}
               </h1>
-              <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+              <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-2">
                 <span className="inline-flex items-center gap-1.5">
-                  <BookOpen className="size-3.5" aria-hidden="true" /> by {series.author}
+                  <BookOpen className="size-3.5" aria-hidden="true" /> recorded under the authorship of {series.author}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <Calendar className="size-3.5" aria-hidden="true" /> inscribed {fullDate(series.created_at)}
                 </span>
               </p>
             </div>
-            <p className="max-w-3xl text-sm leading-relaxed text-text-2 sm:text-base">
-              {series.description}
-            </p>
+
+            {/* Classification grid */}
+            <dl className="grid gap-x-8 gap-y-3 border-y border-border py-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Classification</dt>
+                <dd className="mt-1">
+                  <Badge tone="gold">{series.genre ?? "Unclassified"}</Badge>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Record Status</dt>
+                <dd className="mt-1">
+                  <StatusPill status={series.status} />
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Archive Rank</dt>
+                <dd className="font-display mt-1 font-bold tabular-nums text-[#f0dd9a]">#{series.rank}</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">Known Affiliations</dt>
+                <dd className="mt-1 font-medium text-parchment">
+                  {seriesCharacters.length} {seriesCharacters.length === 1 ? "entity" : "entities"}
+                </dd>
+              </div>
+            </dl>
+
+            <div>
+              <h2 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-3">
+                Chronicle Summary
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-2 sm:text-base">
+                {series.description}
+              </p>
+            </div>
+
             <div className="mt-1 flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => setCharOpen(true)} className="btn-arcane px-5 py-2.5 text-sm">
-                <UserPlus className="size-4" aria-hidden="true" /> Add character
+              <button type="button" onClick={() => setCharOpen(true)} className="btn-gold px-5 py-2.5 text-sm">
+                <UserPlus className="size-4" aria-hidden="true" /> Catalog entity
               </button>
-              <button
-                type="button"
-                onClick={() => setEditOpen(true)}
-                className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-violet-400/40 hover:text-violet-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Pencil className="size-4" aria-hidden="true" /> Edit series
+              <button type="button" onClick={() => setEditOpen(true)} className="btn-ember px-5 py-2.5 text-sm">
+                <Pencil className="size-4" aria-hidden="true" /> Amend record
               </button>
-              <button
-                type="button"
-                onClick={() => setConfirmOpen(true)}
-                className="inline-flex items-center gap-2 rounded-md border border-rose-400/25 bg-rose-500/5 px-5 py-2.5 text-sm font-medium text-rose-300 transition-colors hover:border-rose-400/50 hover:bg-rose-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Trash2 className="size-4" aria-hidden="true" /> Remove
+              <button type="button" onClick={() => setConfirmOpen(true)} className="btn-ember-danger px-5 py-2.5 text-sm">
+                <Trash2 className="size-4" aria-hidden="true" /> Strike record
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section aria-label="Series statistics" className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatTile icon={<Users className="size-4 text-violet-bright" aria-hidden="true" />} label="Characters" value={String(seriesCharacters.length)} />
-        <StatTile icon={<ScrollText className="size-4 text-amber-300" aria-hidden="true" />} label="Insights" value={String(seriesInsights.length > 4 ? seriesInsights.length : insights.filter((i) => seriesCharacters.some((c) => c._id === i.character_id)).length)} />
-        <StatTile icon={<BookOpen className="size-4 text-magenta" aria-hidden="true" />} label="Status" value={STATUS_LABEL[series.status]} />
-        <StatTile icon={<Calendar className="size-4 text-emerald-300" aria-hidden="true" />} label="Inscribed" value={fullDate(series.created_at)} />
-      </section>
-
-      {/* Characters */}
+      {/* Entities */}
       <section aria-labelledby="series-characters">
         <SectionHeader
-          kicker="Cast of this world"
-          title="Characters"
+          kicker="Known affiliations"
+          title="Entities of this Record"
           action={
             <button
               type="button"
               onClick={() => setCharOpen(true)}
-              className="inline-flex items-center gap-1 text-sm font-medium text-violet-bright hover:text-magenta"
+              className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]"
             >
-              <UserPlus className="size-4" aria-hidden="true" /> Add character
+              <UserPlus className="size-4" aria-hidden="true" /> Catalog entity
             </button>
           }
         />
         {seriesCharacters.length === 0 ? (
           <EmptyState
             icon={<Users className="size-6" />}
-            title="No characters bound to this series yet"
-            hint="Catalog the cast so readers can follow their arcs."
+            title="No entities bound to this record"
+            hint="Catalog the cast so researchers can follow their arcs."
             action={
-              <button type="button" className="btn-gold px-5 py-2.5 text-sm" onClick={() => setCharOpen(true)}>
+              <button type="button" className="btn-ember px-5 py-2.5 text-sm" onClick={() => setCharOpen(true)}>
                 <UserPlus className="size-4" aria-hidden="true" /> Catalog the first
               </button>
             }
@@ -222,30 +234,34 @@ export default function ManhwaDetailView() {
         )}
       </section>
 
-      {/* Related series */}
+      {/* Related records */}
       {manhwa.length > 1 && (
         <section aria-labelledby="related-series">
-          <SectionHeader kicker="More from the archive" title="Related Series" />
+          <SectionHeader kicker="Adjacent vault shelves" title="Related Records" />
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {manhwa
               .filter((m) => m._id !== series._id)
               .slice(0, 5)
               .map((m) => (
-                <ManhwaCard key={m._id} manhwa={m} charCount={characters.filter((c) => c.manhwa_id === m._id).length} />
+                <ManhwaCard
+                  key={m._id}
+                  manhwa={m}
+                  charCount={characters.filter((c) => c.manhwa_id === m._id).length}
+                />
               ))}
           </div>
         </section>
       )}
 
-      {/* Latest insights in this series */}
+      {/* Latest chronicles for this record */}
       {seriesInsights.length > 0 && (
         <section aria-labelledby="series-insights">
           <SectionHeader
-            kicker="From the scribes"
-            title="Latest Insights"
+            kicker="Attached chronicles"
+            title="Latest Chronicles"
             action={
-              <Link to="/insights" className="inline-flex items-center gap-1 text-sm font-medium text-violet-bright hover:text-magenta">
-                All insights <ScrollText className="size-4" aria-hidden="true" />
+              <Link to="/chronicles" className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-[#f0dd9a]">
+                All chronicles <ScrollText className="size-4" aria-hidden="true" />
               </Link>
             }
           />
@@ -255,16 +271,16 @@ export default function ManhwaDetailView() {
               return (
                 <Link
                   key={i._id}
-                  to={character ? `/character/${character._id}` : "/insights"}
-                  className="panel hover-lift flex items-center gap-4 p-4"
+                  to={character ? `/character/${character._id}` : "/chronicles"}
+                  className="record hover-lift flex items-center gap-4 p-4"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-violet-400/25 bg-violet-400/10">
-                    <ScrollText className="size-4 text-violet-bright" aria-hidden="true" />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-gold/30 bg-crimson/12">
+                    <ScrollText className="size-4 text-gold" aria-hidden="true" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate font-semibold text-foreground">{i.title}</span>
-                    <span className="block truncate text-xs text-muted-foreground">
-                      {character?.name ?? "Unknown character"} · {i.type}
+                    <span className="block truncate font-semibold text-parchment">{i.title}</span>
+                    <span className="block truncate text-xs text-text-3">
+                      {character?.name ?? "Unknown entity"} · {STATUS_LABEL[i.type as keyof typeof STATUS_LABEL] ?? i.type}
                     </span>
                   </span>
                 </Link>
@@ -273,6 +289,10 @@ export default function ManhwaDetailView() {
           </div>
         </section>
       )}
+
+      <p className="sr-only">
+        Record status: {STATUS_LABEL[series.status]}; {insightTotal} chronicles attached.
+      </p>
 
       {/* Forms */}
       <ManhwaFormDialog open={editOpen} onOpenChange={setEditOpen} manhwa={series} />
@@ -291,9 +311,9 @@ export default function ManhwaDetailView() {
       <ConfirmDialog
         open={confirmOpen}
         onOpenChange={setConfirmOpen}
-        title={`Remove “${series.title}”?`}
-        description="This strikes the series, its characters, and their insights from the codex. This cannot be undone."
-        confirmLabel="Strike from the codex"
+        title={`Strike “${series.title}” from the archive?`}
+        description="This removes the record, its entities, and their chronicles. This cannot be undone."
+        confirmLabel="Strike from the archive"
         loading={deleting}
         onConfirm={() => void handleDelete()}
       />
@@ -301,14 +321,24 @@ export default function ManhwaDetailView() {
   );
 }
 
-function StatTile({ icon, label, value, className }: { icon: React.ReactNode; label: string; value: string; className?: string }) {
+function StatTile({
+  icon,
+  label,
+  value,
+  className,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  className?: string;
+}) {
   return (
-    <div className={cn("panel p-5", className)}>
-      <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+    <div className={cn("record p-5", className)}>
+      <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-text-3">
         {icon}
         {label}
       </div>
-      <p className="font-display mt-3 truncate text-xl font-bold tabular-nums text-foreground" title={value}>
+      <p className="font-display mt-3 truncate text-xl font-bold tabular-nums text-parchment" title={value}>
         {value}
       </p>
     </div>

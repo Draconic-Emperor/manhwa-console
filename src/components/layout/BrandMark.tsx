@@ -1,42 +1,76 @@
 import { Link } from "react-router";
 import { cn } from "@/lib/utils";
 
-export function CodexSigil({ className }: { className?: string }) {
+/**
+ * ConsoleSeal — circular archive seal with a stylized "M" forged from
+ * archive columns, an inner sigil, and a gold ring. No anime characters.
+ */
+export function ConsoleSeal({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="sigil-v" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#A78BFA" />
-          <stop offset="1" stopColor="#E879F9" />
+        <linearGradient id="seal-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#F3E3A4" />
+          <stop offset="0.55" stopColor="#D4AF37" />
+          <stop offset="1" stopColor="#B9962C" />
         </linearGradient>
+        <radialGradient id="seal-ember" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor="#B31B34" stopOpacity="0.9" />
+          <stop offset="1" stopColor="#8B1126" stopOpacity="0" />
+        </radialGradient>
       </defs>
-      <path
-        d="M32 10 L34 30 L54 32 L34 34 L32 54 L30 34 L10 32 L30 30 Z"
-        fill="url(#sigil-v)"
+
+      {/* Ember core */}
+      <circle cx="32" cy="32" r="26" fill="url(#seal-ember)" />
+
+      {/* Outer seal ring */}
+      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#seal-gold)" strokeWidth="2" />
+      <circle
+        cx="32"
+        cy="32"
+        r="24.5"
+        fill="none"
+        stroke="url(#seal-gold)"
+        strokeWidth="1"
+        strokeDasharray="2.5 4"
+        opacity="0.8"
       />
-      <circle cx="32" cy="32" r="5.5" fill="none" stroke="#F5C76B" strokeWidth="2.5" />
+
+      {/* Stylized M: two archive columns + apex */}
+      <path
+        d="M18 44 V22 L24 30 L32 20 L40 30 L46 22 V44"
+        fill="none"
+        stroke="url(#seal-gold)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Archive column plinths */}
+      <path d="M15 44 h34" stroke="url(#seal-gold)" strokeWidth="2" strokeLinecap="round" opacity="0.85" />
+      <path d="M17.5 47.5 h29" stroke="#B31B34" strokeWidth="1.5" strokeLinecap="round" opacity="0.9" />
     </svg>
   );
 }
 
-/** Brand lockup: sigil + MANHWA CODEX wordmark. */
+/** Brand lockup: seal + MANHWA CONSOLE wordmark with gold styling. */
 export function BrandMark({ to = "/", compact = false }: { to?: string; compact?: boolean }) {
   return (
     <Link
       to={to}
       className="group flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      aria-label="Manhwa Codex home"
+      aria-label="Manhwa Console home"
     >
-      <span className="relative flex size-10 shrink-0 items-center justify-center rounded-xl border border-violet-400/30 bg-gradient-to-br from-violet-400/15 to-fuchsia-400/5 shadow-[0_0_18px_-4px_var(--violet-glow)] transition-transform duration-300 group-hover:rotate-6">
-        <CodexSigil className="size-6" />
+      <span className="relative flex size-10 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-void shadow-[0_0_18px_-4px_var(--crimson-glow)] transition-transform duration-300 group-hover:rotate-6">
+        <ConsoleSeal className="size-6" />
       </span>
       {!compact && (
         <span className="min-w-0">
-          <span className="font-display block truncate text-[15px] font-bold leading-tight tracking-[0.18em] text-foreground">
+          <span className="font-display block truncate text-[15px] font-bold leading-tight tracking-[0.18em] text-parchment">
             MANHWA
           </span>
           <span className="text-gradient-gold font-display block text-[11px] font-semibold leading-tight tracking-[0.42em]">
-            CODEX
+            CONSOLE
           </span>
         </span>
       )}

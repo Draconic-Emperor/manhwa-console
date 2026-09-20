@@ -23,8 +23,8 @@ export function FavoriteButton({
     <button
       type="button"
       aria-pressed={saved}
-      aria-label={saved ? `Remove “${title}” from your Codex` : `Save “${title}” to your Codex`}
-      title={saved ? "Remove from your Codex" : "Save to your Codex"}
+      aria-label={saved ? `Release “${title}” from your collection` : `Seal “${title}” into your collection`}
+      title={saved ? "Release from your collection" : "Seal into your collection"}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -35,9 +35,9 @@ export function FavoriteButton({
       className={cn(
         "inline-flex size-9 items-center justify-center rounded-full border backdrop-blur transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         saved
-          ? "border-rose-400/50 bg-rose-500/20 text-rose-300 shadow-[0_0_16px_-4px_rgba(251,113,133,0.6)]"
-          : "border-white/15 bg-black/40 text-white/80 hover:border-rose-400/40 hover:text-rose-300",
-        pop && "heart-pop",
+          ? "border-crimson/60 bg-crimson/25 text-[#f2b8bb] shadow-[0_0_16px_-4px_var(--crimson-glow)]"
+          : "border-gold/30 bg-obsidian/60 text-parchment/85 hover:border-crimson/50 hover:text-[#f2b8bb]",
+        pop && "record-pop",
         className,
       )}
     >

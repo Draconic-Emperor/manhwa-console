@@ -10,20 +10,20 @@ import { cn } from "@/lib/utils";
 
 const PODIUM_STYLES = [
   {
-    ring: "border-amber-400/50 shadow-[0_0_40px_-8px_var(--gold-glow)]",
-    chip: "bg-amber-400/15 text-amber-200 border-amber-400/50",
+    ring: "border-gold/55 shadow-[0_0_40px_-8px_var(--gold-glow)]",
+    chip: "bg-gold/15 text-[#f0dd9a] border-gold/55",
     label: "1st",
     icon: Crown,
   },
   {
-    ring: "border-fuchsia-400/50 shadow-[0_0_36px_-8px_var(--magenta-glow)]",
-    chip: "bg-fuchsia-400/15 text-fuchsia-200 border-fuchsia-400/50",
+    ring: "border-crimson/60 shadow-[0_0_36px_-8px_var(--crimson-glow)]",
+    chip: "bg-crimson/20 text-[#eda3ac] border-crimson/60",
     label: "2nd",
     icon: Medal,
   },
   {
-    ring: "border-violet-400/50",
-    chip: "bg-violet-400/15 text-violet-200 border-violet-400/50",
+    ring: "border-gold/35",
+    chip: "bg-gold/12 text-gold border-gold/35",
     label: "3rd",
     icon: Medal,
   },
@@ -39,7 +39,7 @@ function PodiumCard({ character, manhwaTitle, place }: { character: Character; m
       type="button"
       onClick={() => navigate(`/character/${character._id}`)}
       className={cn(
-        "panel hover-lift group relative flex flex-col items-center gap-3 border p-6 pt-8 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "record hover-lift group relative flex flex-col items-center gap-3 p-6 pt-8 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         style.ring,
         place === 0 && "md:-mt-4",
       )}
@@ -48,13 +48,13 @@ function PodiumCard({ character, manhwaTitle, place }: { character: Character; m
       <span className={cn("absolute left-1/2 top-3 -translate-x-1/2 inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider", style.chip)}>
         <Icon className="size-3" aria-hidden="true" /> {style.label}
       </span>
-      <span className="media-zoom relative mt-4 block size-24 overflow-hidden rounded-full border-2 border-white/15">
+      <span className="media-zoom relative mt-4 block size-24 overflow-hidden rounded-full border-2 border-gold/25">
         <CoverImage src={character.image_url} seed={character._id} ratio="portrait" alt="" />
       </span>
-      <span className="font-display text-lg font-bold text-foreground group-hover:text-violet-bright">
+      <span className="font-display text-lg font-bold text-parchment group-hover:text-gold">
         {character.name}
       </span>
-      <span className="text-xs text-muted-foreground">{manhwaTitle}</span>
+      <span className="text-xs text-text-3">{manhwaTitle}</span>
       <span className={cn("text-[11px] font-bold uppercase tracking-[0.18em]", tier.text)}>
         {tier.label} · Rank {character.rank}
       </span>
@@ -80,9 +80,12 @@ export default function RankingsView() {
     <div className="space-y-10">
       <header className="rise-in">
         <p className="kicker">Power registry</p>
-        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Power Rankings</h1>
+        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-parchment sm:text-4xl">
+          Rankings
+        </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-2 sm:text-base">
-          The community's standing of every cataloged character. Lower rank numbers mean greater standing within the codex — tier names group the registry.
+          The researchers' standing of every cataloged entity. Lower rank numbers mean greater
+          standing within the archive — tier names group the registry.
         </p>
       </header>
 
@@ -91,13 +94,13 @@ export default function RankingsView() {
       ) : ranked.length === 0 ? (
         <EmptyState
           icon={<Trophy className="size-6" />}
-          title="No champions yet"
-          hint="Catalog characters with ranks to raise the power registry."
+          title="No legends yet"
+          hint="Catalog entities with ranks to raise the power registry."
         />
       ) : (
         <>
           {/* Podium */}
-          <section aria-label="Top three characters">
+          <section aria-label="Top three entities">
             <div className="grid gap-4 md:grid-cols-3">
               {podium.map((c, i) => (
                 <PodiumCard key={c._id} character={c} manhwaTitle={manhwaById.get(c.manhwa_id)?.title} place={i} />
@@ -116,7 +119,7 @@ export default function RankingsView() {
                   title={`${tierName} Tier`}
                 />
                 <ol className="space-y-2">
-                  {list.map((c, idx) => {
+                  {list.map((c) => {
                     const globalIndex = ranked.indexOf(c);
                     const tier = rankTier(c.rank);
                     return (
@@ -124,20 +127,20 @@ export default function RankingsView() {
                         <button
                           type="button"
                           onClick={() => navigate(`/character/${c._id}`)}
-                          className="panel hover-lift group flex w-full items-center gap-4 p-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          className="record hover-lift group flex w-full items-center gap-4 p-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                           aria-label={`Rank ${globalIndex + 1}: ${c.name}`}
                         >
-                          <span className="font-display w-10 shrink-0 text-center text-xl font-bold tabular-nums text-muted-foreground">
+                          <span className="font-display w-10 shrink-0 text-center text-xl font-bold tabular-nums text-text-3">
                             {globalIndex + 1}
                           </span>
-                          <span className="media-zoom size-12 shrink-0 overflow-hidden rounded-lg border border-white/10">
+                          <span className="media-zoom size-12 shrink-0 overflow-hidden rounded-lg border border-gold/20">
                             <CoverImage src={c.image_url} seed={c._id} ratio="portrait" alt="" />
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block truncate font-semibold text-foreground group-hover:text-violet-bright">
+                            <span className="block truncate font-semibold text-parchment group-hover:text-gold">
                               {c.name}
                             </span>
-                            <span className="block truncate text-xs text-muted-foreground">
+                            <span className="block truncate text-xs text-text-3">
                               {manhwaById.get(c.manhwa_id)?.title ?? "Unbound"} · {c.role}
                             </span>
                           </span>
@@ -153,6 +156,8 @@ export default function RankingsView() {
               </section>
             );
           })}
+          {/* rest is intentionally sliced per tier above */}
+          <span className="sr-only">{rest.length} more entities ranked below the podium</span>
         </>
       )}
     </div>

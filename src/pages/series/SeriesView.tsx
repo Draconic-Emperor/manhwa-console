@@ -1,9 +1,5 @@
 import { useMemo, useState } from "react";
 import { Library, Search, SlidersHorizontal, X } from "lucide-react";
-
-function Filter(props: { className?: string }) {
-  return <SlidersHorizontal {...props} />;
-}
 import { useCodex } from "@/hooks/use-codex";
 import { STATUS_LABEL } from "@/lib/codex";
 import { EmptyState, SectionHeader, SkeletonGrid } from "@/components/ui/codex";
@@ -18,7 +14,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+
+function Filter(props: { className?: string }) {
+  return <SlidersHorizontal {...props} />;
+}
 
 export default function SeriesView() {
   const { loading, manhwa, characters } = useCodex();
@@ -73,31 +72,34 @@ export default function SeriesView() {
   return (
     <div className="space-y-8">
       <header className="rise-in">
-        <p className="kicker">The archive</p>
-        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Series Archive</h1>
+        <p className="kicker">The vault of records</p>
+        <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-parchment sm:text-4xl">
+          Series Archive
+        </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-2 sm:text-base">
-          Every manhwa inscribed by the community — browse, filter, and step through into each world.
+          Every manhwa inscribed by the researchers — browse, filter, and open each record to step
+          into its world.
         </p>
       </header>
 
       {/* Toolbar */}
-      <div className="panel-glass sticky top-16 z-20 rounded-xl border p-4 lg:top-0">
+      <div className="panel-glass sticky top-16 z-20 rounded-xl p-4 lg:top-0">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-3" aria-hidden="true" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search title or author…"
-              className="pl-9"
-              aria-label="Search series"
+              placeholder="Query the Archive…"
+              className="input-console pl-9"
+              aria-label="Query series records"
             />
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:flex lg:items-center">
             <div>
-              <Label htmlFor="f-status" className="sr-only">Status</Label>
+              <Label htmlFor="f-status" className="sr-only">Record status</Label>
               <Select value={status} onValueChange={setStatus}>
-                <SelectTrigger id="f-status" className="w-full lg:w-36" aria-label="Filter by status">
+                <SelectTrigger id="f-status" className="input-console w-full lg:w-36" aria-label="Filter by record status">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
@@ -111,7 +113,7 @@ export default function SeriesView() {
             <div>
               <Label htmlFor="f-genre" className="sr-only">Genre</Label>
               <Select value={genre} onValueChange={setGenre}>
-                <SelectTrigger id="f-genre" className="w-full lg:w-36" aria-label="Filter by genre">
+                <SelectTrigger id="f-genre" className="input-console w-full lg:w-36" aria-label="Filter by genre">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
@@ -125,7 +127,7 @@ export default function SeriesView() {
             <div>
               <Label htmlFor="f-author" className="sr-only">Author</Label>
               <Select value={author} onValueChange={setAuthor}>
-                <SelectTrigger id="f-author" className="w-full lg:w-40" aria-label="Filter by author">
+                <SelectTrigger id="f-author" className="input-console w-full lg:w-40" aria-label="Filter by author">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
@@ -137,29 +139,29 @@ export default function SeriesView() {
               </Select>
             </div>
             <div>
-              <Label htmlFor="f-sort" className="sr-only">Sort</Label>
+              <Label htmlFor="f-sort" className="sr-only">Order</Label>
               <Select value={sort} onValueChange={(v) => setSort(v as typeof sort)}>
-                <SelectTrigger id="f-sort" className="w-full lg:w-40" aria-label="Sort series">
+                <SelectTrigger id="f-sort" className="input-console w-full lg:w-40" aria-label="Order records">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="border-border bg-popover">
-                  <SelectItem value="recent">Recently added</SelectItem>
-                  <SelectItem value="rank">Rank (best first)</SelectItem>
+                  <SelectItem value="recent">Recently sealed</SelectItem>
+                  <SelectItem value="rank">Rank (highest first)</SelectItem>
                   <SelectItem value="title">Title A–Z</SelectItem>
-                  <SelectItem value="chars">Most characters</SelectItem>
+                  <SelectItem value="chars">Most entities</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-text-3">
           <span aria-live="polite">
-            {loading ? "Consulting the archive…" : `${filtered.length} of ${manhwa.length} series`}
+            {loading ? "Consulting the archive…" : `${filtered.length} of ${manhwa.length} records revealed`}
           </span>
           {activeFilters > 0 && (
             <>
-              <span className="inline-flex items-center gap-1 text-violet-bright">
+              <span className="inline-flex items-center gap-1 text-gold">
                 <Filter className="size-3" aria-hidden="true" />
                 {activeFilters} active
               </span>
@@ -177,14 +179,14 @@ export default function SeriesView() {
       ) : manhwa.length === 0 ? (
         <EmptyState
           icon={<Library className="size-6" />}
-          title="The archive shelf is empty"
-          hint="No series have been inscribed yet. The first entry starts the legend."
+          title="The shelf stands empty"
+          hint="No records have been inscribed yet. The first entry begins the legend."
         />
       ) : filtered.length === 0 ? (
         <EmptyState
           icon={<SlidersHorizontal className="size-6" />}
-          title="No series match your filters"
-          hint="Loosen the filters or clear them to see the full archive."
+          title="No records match your query"
+          hint="Loosen the filters or clear them to reveal the full archive."
           action={
             <Button variant="outline" onClick={resetFilters}>
               Clear filters

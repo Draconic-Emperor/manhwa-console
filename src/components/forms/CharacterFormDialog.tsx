@@ -125,7 +125,7 @@ export function CharacterFormDialog({
                 placeholder="e.g. Sera Vael"
                 aria-invalid={Boolean(errors.name)}
               />
-              {errors.name && <p className="text-xs text-rose-300">{errors.name}</p>}
+              {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="ch-role">Role *</Label>
@@ -136,7 +136,7 @@ export function CharacterFormDialog({
                 placeholder="e.g. Protagonist"
                 aria-invalid={Boolean(errors.role)}
               />
-              {errors.role && <p className="text-xs text-rose-300">{errors.role}</p>}
+              {errors.role && <p className="text-xs text-destructive">{errors.role}</p>}
             </div>
           </div>
 
@@ -155,7 +155,7 @@ export function CharacterFormDialog({
                   ))}
                 </SelectContent>
               </Select>
-              {errors.series && <p className="text-xs text-rose-300">{errors.series}</p>}
+              {errors.series && <p className="text-xs text-destructive">{errors.series}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="ch-rank">Rank</Label>
@@ -167,7 +167,7 @@ export function CharacterFormDialog({
                 placeholder="1 (strongest) – 999"
                 aria-invalid={Boolean(errors.rank)}
               />
-              {errors.rank && <p className="text-xs text-rose-300">{errors.rank}</p>}
+              {errors.rank && <p className="text-xs text-destructive">{errors.rank}</p>}
             </div>
           </div>
 
@@ -181,7 +181,7 @@ export function CharacterFormDialog({
               aria-invalid={Boolean(errors.image)}
             />
             {errors.image ? (
-              <p className="text-xs text-rose-300">{errors.image}</p>
+              <p className="text-xs text-destructive">{errors.image}</p>
             ) : (
               <p className="text-xs text-muted-foreground">Leave empty and the codex conjures its own portrait.</p>
             )}
@@ -197,14 +197,14 @@ export function CharacterFormDialog({
               placeholder="Who are they, and what power do they carry?"
               aria-invalid={Boolean(errors.description)}
             />
-            {errors.description && <p className="text-xs text-rose-300">{errors.description}</p>}
+            {errors.description && <p className="text-xs text-destructive">{errors.description}</p>}
           </div>
 
           <DialogFooter className="gap-2 sm:gap-0">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)} disabled={saving}>
               Cancel
             </Button>
-            <Button type="submit" disabled={saving} className="btn-arcane">
+            <Button type="submit" disabled={saving} className="btn-gold">
               {saving && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
               {editing ? "Save changes" : "Catalog character"}
             </Button>
